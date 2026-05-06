@@ -72,6 +72,8 @@
   .tab-btn.t-h.active { background: var(--accent-hong); }
   .tab-btn.t-tips.active { background: #555; }
   .tab-btn.t-food-guide.active { background: #b04a1e; }
+  .tab-btn.t-extra { background: transparent; }
+  .tab-btn.t-extra.active { background: var(--accent-seoul); }
   .leg { display: none; }
   .leg.active { display: block; }
 
@@ -169,6 +171,9 @@
   .fg-where { font-family: sans-serif; font-size: 11px; color: var(--text3); margin-top: 2px; }
   .fg-desc { font-size: 0.85rem; color: var(--text2); margin-top: 4px; line-height: 1.5; }
 
+  /* EXTRA TIPS TAB */
+  .tips-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+
   @media (max-width: 600px) {
     .food-grid { grid-template-columns: 1fr; }
     .option-cards { grid-template-columns: 1fr; }
@@ -243,6 +248,7 @@
   .mobile-nav-btn.mnb-h.active { border-top-color: var(--accent-hong); color: var(--accent-hong); }
   .mobile-nav-btn.mnb-tips.active { border-top-color: #555; color: #555; }
   .mobile-nav-btn.mnb-food.active { border-top-color: #b04a1e; color: #b04a1e; }
+  .mobile-nav-btn.mnb-extra.active { border-top-color: #2563a8; color: #2563a8; }
 
   @media (max-width: 700px) {
     .mobile-nav { display: block; }
@@ -325,6 +331,7 @@
   <button class="tab-btn t-h" onclick="showLeg('h',this)">Seoul 2 · Hongdae</button>
   <button class="tab-btn t-tips" onclick="showLeg('tips',this)">Essential Tips + Food Guide</button>
   <button class="tab-btn t-food-guide" onclick="showLeg('fooddrink',this)">🍽 Food &amp; Drinks Guide</button>
+  <button class="tab-btn t-extra" onclick="showLeg('extra',this)">💡 Extra Tips</button>
 </div>
 
 <!-- ======================= SEOUL 1 ======================= -->
@@ -1651,6 +1658,341 @@
 
 </div><!-- end food & drinks leg -->
 
+<!-- ======================= EXTRA TIPS TAB ======================= -->
+<div id="leg-extra" class="leg">
+
+  <div style="background:var(--surface2); padding:12px 16px; border-radius:8px; margin-bottom:1rem; border:1px solid var(--border);">
+    <div style="font-size:12px; font-family:sans-serif; color:var(--text3);">
+      <strong style="color:var(--text);">Legend:</strong> 🏠 = Local favorite (not touristy) &nbsp;•&nbsp; 🎯 = Tourist attraction (but worth it) &nbsp;•&nbsp; ⏰ = Best time to visit &nbsp;•&nbsp; 📅 = Book ahead
+    </div>
+  </div>
+
+  <!-- ===== SEOUL MYEONGDONG ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-seoul);">
+        <span style="font-size:1.05rem; color: var(--accent-seoul);">🏠 Seoul — Myeongdong Area</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+<div class="tip-row">
+          <div class="tip-key">Cafés 🏠 <a href="https://map.kakao.com/link/search/서울커피" target="_blank" class="kakao-link small">Seoul Coffee</a> · <a href="https://map.kakao.com/link/search/싹다담" target="_blank" class="kakao-link small">Silladang</a> · <a href="https://map.kakao.com/link/search/청수당" target="_blank" class="kakao-link small">Cheongsudang</a> · <a href="https://map.kakao.com/link/search/어니언안국" target="_blank" class="kakao-link small">Onion</a></div>
+          <div class="tip-val"><strong>서울커피</strong> — 1980s time capsule. <strong>싹다담</strong> — hanok courtyard. <strong>청수당</strong> — 6 hanok, zen garden. <strong>어니언 안국</strong> — 1920s hanok, pandoro. <strong>프릳츠커피 원서</strong> — hidden. <strong>백미당 삼청</strong> — milk soft serve.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Restaurants 🏠 <a href="https://map.kakao.com/link/search/노비집" target="_blank" class="kakao-link small">NOBIZIB</a> · <a href="https://map.kakao.com/link/search/서서갈비" target="_blank" class="kakao-link small">Seoseo</a> · <a href="https://map.kakao.com/link/search/필동면옥" target="_blank" class="kakao-link small">Pildong</a> · <a href="https://map.kakao.com/link/search/익선반주" target="_blank" class="kakao-link small">Ikseon Banju</a></div>
+          <div class="tip-val"><strong>노비집</strong> — Cotton Candy Galbi. <strong>서서갈비</strong> — standing BBQ. <strong>필동면옥</strong> — Michelin Bib, naengmyeon. <strong>익선반주</strong> — modern fusion. <strong>익선취향</strong> — Western in hanok. <strong>모와</strong> — wine tunnel. <strong>아슬서울</strong> — 13th floor view.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Drinking 🏠 <a href="https://map.kakao.com/link/search/종로포차거리" target="_blank" class="kakao-link small">Jongno</a> · <a href="https://map.kakao.com/link/search/익선동포차거리" target="_blank" class="kakao-link small">Ikseon</a> · <a href="https://map.kakao.com/link/search/빛의고리" target="_blank" class="kakao-link small">Orb</a></div>
+          <div class="tip-val"><strong>종로 포차거리</strong> — classic pocha. <strong>익선동 포차거리</strong> — modern MZ. <strong>빛의 고리</strong> — cocktail in hanok. <strong>바름</strong> — creative cocktails. <strong>뚜</strong> — makgeolli. ⏰ Night best.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Neighborhoods 🏠 <a href="https://map.kakao.com/link/search/익선동" target="_blank" class="kakao-link small">Ikseon</a> · <a href="https://map.kakao.com/link/search/삼청동" target="_blank" class="kakao-link small">Samcheong</a> · <a href="https://map.kakao.com/link/search/통인시장" target="_blank" class="kakao-link small">Tongin</a></div>
+          <div class="tip-val"><strong>익선동</strong> — 1920s hanok, less touristy. <strong>삼청동</strong> — galleries, tea houses. <strong>서동</strong> — affordable west of palace. <strong>통인시장</strong> — ₩5,000 dosirak.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Museums <a href="https://map.kakao.com/link/search/THART" target="_blank" class="kakao-link small">THART</a> · <a href="https://map.kakao.com/link/search/MMCA서울" target="_blank" class="kakao-link small">MMCA</a></div>
+          <div class="tip-val"><strong>THART</strong> — media art. <strong>MMCA Seoul</strong> — modern art.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Restaurants 🏠 <a href="https://map.kakao.com/link/search/노비집" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>노비집</strong> — Cotton Candy Spicy Galbi-jjim since 1982. <strong>서서갈비</strong> — standing BBQ. <strong>필동면옥</strong> — Michelin Bib, naengmyeon. <strong>익선반주</strong> — modern Korean fusion. <strong>익선취향</strong> — Western in hanok. <strong>모와</strong> — wine tunnel. <strong>아슬서울</strong> — 13th floor view, opened Dec 2024.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Drinking 🏠 <a href="https://map.kakao.com/link/search/종로 포차거리" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>종로 포차거리</strong> — classic orange-tented pocha. <strong>익선동 포차거리</strong> — modern MZ pocha. <strong>빛의 고리</strong> — cocktail in hanok. <strong>바름</strong> — creative cocktails. <strong>뚜</strong> — makgeolli pub. ⏰ Night best.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Neighborhoods 🏠 <a href="https://map.kakao.com/link/search/익선동" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>익선동</strong> — 1920s hanok, less touristy than Bukchon. <strong>삼청동</strong> — galleries, tea houses. <strong>서동</strong> — affordable west of Gyeongbokgung. <strong>통인시장</strong> — ₩5,000 dosirak lunchbox.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Museums <a href="https://map.kakao.com/link/search/THART" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>THART</strong> — media art in Hongdae. <strong>MMCA Seoul</strong> — modern art, red brick + Joseon-era.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SEOUL HONGDAE ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-hong);">
+        <span style="font-size:1.05rem; color: var(--accent-hong);">🏠 Seoul — Hongdae Area</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+<div class="tip-row">
+          <div class="tip-key">Food 🏠 <a href="https://map.kakao.com/link/search/육미안" target="_blank" class="kakao-link small">Yookmian</a> · <a href="https://map.kakao.com/link/search/오레노라멘" target="_blank" class="kakao-link small">Oreno</a> · <a href="https://map.kakao.com/link/search/우동가든" target="_blank" class="kakao-link small">Udon Kaden</a> · <a href="https://map.kakao.com/link/search/홍익게장" target="_blank" class="kakao-link small">Gejang</a></div>
+          <div class="tip-val"><strong>육미안</strong> — Premium Hanwoo. <strong>오레노 라멘</strong> — Michelin Bib. <strong>우동가든</strong> — Blue Ribbon udon. <strong>홍익게장</strong> — ganjang-gejang AYCE. <strong>조폭떡볶이</strong> — legendary. <strong>연남 Dumpling</strong> — famous.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Craft Beer 🏠 <a href="https://map.kakao.com/link/search/ThursdayParty" target="_blank" class="kakao-link small">Thursday</a> · <a href="https://map.kakao.com/link/search/아트몬스터홍대" target="_blank" class="kakao-link small">Artmonster</a> · <a href="https://map.kakao.com/link/search/범맥주" target="_blank" class="kakao-link small">Beom</a></div>
+          <div class="tip-val"><strong>Thursday Party</strong> — pioneering. <strong>아트몬스터</strong> — + fried chicken. <strong>범맥주</strong> — late hours. <strong>650</strong> — cocktails. <strong>Little Big</strong> — speakeasy. <strong>Vinyl</strong> — LP bar.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Cafés 🎯 <a href="https://map.kakao.com/link/search/밀로커피" target="_blank" class="kakao-link small">Millo</a> · <a href="https://map.kakao.com/link/search/AnthraciteCoffee서교" target="_blank" class="kakao-link small">Anthracite</a> · <a href="https://map.kakao.com/link/search/943킹스크로스" target="_blank" class="kakao-link small">943</a> · <a href="https://map.kakao.com/link/search/콜린" target="_blank" class="kakao-link small">Colline</a></div>
+          <div class="tip-val"><strong>밀로커피</strong> — "slow coffee". <strong>Anthracite</strong> — sleek. <strong>943 킹스크로스</strong> — Harry Potter. <strong>콜린</strong> — flower + Bingsu. <strong>팽페르뒤</strong> — churros.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Shopping 🏠 <a href="https://map.kakao.com/link/search/무신사스토어홍대" target="_blank" class="kakao-link small">Musinsa</a> · <a href="https://map.kakao.com/link/search/에이랜드홍대" target="_blank" class="kakao-link small">ALAND</a> · <a href="https://map.kakao.com/link/search/3CE" target="_blank" class="kakao-link small">3CE</a></div>
+          <div class="tip-val"><strong>무신사 스토어</strong> — fashion flagship. <strong>에이랜드</strong> — multi-brand. <strong>3CE/STYLENANDA</strong> — K-beauty. <strong>Olive Young</strong> — largest.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Day Trips 🏠 <a href="https://map.kakao.com/link/search/용마랜드" target="_blank" class="kakao-link small">Yongma</a> · <a href="https://map.kakao.com/link/search/선유도" target="_blank" class="kakao-link small">Seonyudo</a></div>
+          <div class="tip-val"><strong>용마랜드</strong> — abandoned amusement. <strong>연남동</strong> — quiet with indie bars. <strong>Mullae-dong</strong> — industrial. <strong>선유도</strong> — eco-park.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Craft Beer 🏠 <a href="https://map.kakao.com/link/search/ThursdayParty" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>Thursday Party</strong> — pioneering craft beer. <strong>아트몬스터</strong> — award-winning + fried chicken. <strong>범맥주</strong> — late hours 16:00-05:00. <strong>650</strong> — cocktails. <strong>Little Big</strong> — speakeasy. <strong>Vinyl</strong> — LP cocktail bar.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Cafés 🎯 <a href="https://map.kakao.com/link/search/밀로커피" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>밀로커피</strong> — "slow coffee" since 2002. <strong>Anthracite</strong> — sleek roastery. <strong>943 킹스크로스</strong> — Harry Potter-themed. <strong>콜린</strong> — flower shop + Persimmon Bingsu. <strong>팽페르뒤</strong> — churros pain perdu.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Shopping 🏠 <a href="https://map.kakao.com/link/search/무신사스토어홍대" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>무신사 스토어</strong> — fashion flagship. <strong>에이랜드</strong> — multi-brand. <strong>3CE/STYLENANDA</strong> — K-beauty. <strong>Olive Young</strong> — largest in Hongdae.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Day Trips 🏠 <a href="https://map.kakao.com/link/search/용마랜드" target="_blank" class="kakao-link small">Map</a></div>
+          <div class="tip-val"><strong>용마랜드</strong> — abandoned amusement park, K-pop MV hotspot. <strong>연남동</strong> — quiet with indie bars. <strong>Mullae-dong</strong> — industrial artist colony. <strong>선유도</strong> — eco-park on Han River.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BUSAN ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-busan);">
+        <span style="font-size:1.05rem; color: var(--accent-busan);">🏠 Busan</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+        <div class="tip-row">
+          <div class="tip-key">Food 🏠 <a href="https://map.kakao.com/link/search/수변최고돼지국밥" target="_blank" class="kakao-link small">Subyeon</a> · <a href="https://map.kakao.com/link/search/정짱진" target="_blank" class="kakao-link small">Jeongjitgan</a> · <a href="https://map.kakao.com/link/search/초량밀면" target="_blank" class="kakao-link small">Choryang</a> · <a href="https://map.kakao.com/link/search/해운대갈비집" target="_blank" class="kakao-link small">Haeundae Galbi</a></div>
+          <div class="tip-val"><strong>수변최고돼지국밥</strong> — gukbap. <strong>정짱진</strong> — Michelin Bib. <strong>초량밀면</strong> — milmyeon. <strong>중앙식당</strong> — daegutang. <strong>희자매</strong> — grilled clam. <strong>88간바지</strong> — late night. <strong>해운대갈비집</strong> — Michelin Star. <strong>모리</strong> — Japanese Michelin.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Coffee 🏠 <a href="https://map.kakao.com/link/search/흰업커피" target="_blank" class="kakao-link small">Blackup</a> · <a href="https://map.kakao.com/link/search/모모스커피" target="_blank" class="kakao-link small">Momos</a> · <a href="https://map.kakao.com/link/search/힛떼로스터리" target="_blank" class="kakao-link small">Hytte</a></div>
+          <div class="tip-val"><strong>흰업커피</strong> — Busan original. <strong>모모스커피</strong> — World Champ 2019. <strong>힛떼로스터리</strong> — sunset. <strong>Waveon</strong> — ocean view.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Nature 🏠 <a href="https://map.kakao.com/link/search/이기해안길" target="_blank" class="kakao-link small">Igidae</a> · <a href="https://map.kakao.com/link/search/석불사" target="_blank" class="kakao-link small">Seokbulsa</a> · <a href="https://map.kakao.com/link/search/금정산" target="_blank" class="kakao-link small">Geumjeongsan</a> · <a href="https://map.kakao.com/link/search/범어사" target="_blank" class="kakao-link small">Beomeosa</a></div>
+          <div class="tip-val"><strong>Igidae Trail</strong> — cliffs. <strong>Seokbulsa</strong> — cliff Buddhas. <strong>Geumjeongsan</strong> — highest. <strong>Hwangnyeongsan</strong> — sunset. <strong>Huinnyeoul</strong> — Santorini. <strong>Beomeosa</strong> — temple.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Drinking 🏠 <a href="https://map.kakao.com/link/search/갈매기브루잉" target="_blank" class="kakao-link small">Galmegi</a> · <a href="https://map.kakao.com/link/search/고릴라브루잉" target="_blank" class="kakao-link small">Gorilla</a> · <a href="https://map.kakao.com/link/search/비어샵전포" target="_blank" class="kakao-link small">Jeonpo</a></div>
+          <div class="tip-val"><strong>갈매기브루잉</strong> — first craft. <strong>고릴라브루잉</strong> — 20 beers. <strong>와일드캣브루잉</strong> — Yuzu Lager. <strong>Beer Shop Jeonpo</strong> — 50+ intl.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GYEONGJU ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-busan);">
+        <span style="font-size:1.05rem; color: var(--accent-busan);">🎯 Gyeongju — Day Trip</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+        <div class="tip-row">
+          <div class="tip-key">UNESCO 🎯 <a href="https://map.kakao.com/link/search/불국사" target="_blank" class="kakao-link small">Bulguksa</a> · <a href="https://map.kakao.com/link/search/석굴암" target="_blank" class="kakao-link small">Seokguram</a> · <a href="https://map.kakao.com/link/search/양동마을" target="_blank" class="kakao-link small">Yangdong</a></div>
+          <div class="tip-val"><strong>Bulguksa</strong> — Silla's most sacred. <strong>Seokguram</strong> — 8th-century Buddha. <strong>Yangdong Village</strong> — UNESCO. <strong>Daereungwon</strong> — royal tombs.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Hidden Temples 🏠 <a href="https://map.kakao.com/link/search/고골사" target="_blank" class="kakao-link small">Golgulsa</a> · <a href="https://map.kakao.com/link/search/보덕암" target="_blank" class="kakao-link small">Bodeokam</a> · <a href="https://map.kakao.com/link/search/칠불암" target="_blank" class="kakao-link small">Chilbul</a></div>
+          <div class="tip-val"><strong>Golgulsa</strong> — cave + Seonmudo demos. <strong>보덕암</strong> — hidden valley. <strong>칠불암</strong> — hidden carvings.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Evening 🎯 <a href="https://map.kakao.com/link/search/첨성대" target="_blank" class="kakao-link small">Cheomseongdae</a> · <a href="https://map.kakao.com/link/search/동궁과월지" target="_blank" class="kakao-link small">Donggung</a></div>
+          <div class="tip-val"><strong>Cheomseongdae</strong> — illuminated at night. <strong>Donggung Palace</strong> — until 10PM. ⏰ Night walk: Cheomseongdae → Gyerim → Woljeonggyo.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Restaurants 🏠 <a href="https://map.kakao.com/link/search/교동쌈밥" target="_blank" class="kakao-link small">Gyodong</a> · <a href="https://map.kakao.com/link/search/영양숯불갈비" target="_blank" class="kakao-link small">Yangyang</a> · <a href="https://map.kakao.com/link/search/함양집" target="_blank" class="kakao-link small">Hamyang</a></div>
+          <div class="tip-val"><strong>교동쌈밥</strong> — Silla-inspired. <strong>영양숯불갈비</strong> — charcoal ribs. <strong>함양집</strong> — hanu beef.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Hanok Stays 🏠 <a href="https://map.kakao.com/link/search/위연재" target="_blank" class="kakao-link small">Wiyeonjae</a> · <a href="https://map.kakao.com/link/search/경주수호정" target="_blank" class="kakao-link small">Suhojeong</a></div>
+          <div class="tip-val"><strong>위연재</strong> — ₩80K-120K. <strong>경주수호정</strong> — ₩120K-200K. <strong>효우당</strong> — ₩250K+.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== JEJU ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-jeju);">
+        <span style="font-size:1.05rem; color: var(--accent-jeju);">🏠 Jeju — Seogwipo Area</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+        <div class="tip-row">
+          <div class="tip-key">Hiking 🏠 <a href="https://map.kakao.com/link/search/성산일출봉" target="_blank" class="kakao-link small">Hallasan</a> · <a href="https://map.kakao.com/link/search/성산일출봉" target="_blank" class="kakao-link small">Seongpanak</a> · <a href="https://map.kakao.com/link/search/성산일출봉" target="_blank" class="kakao-link small">Gwaneumsa</a> · <a href="https://map.kakao.com/link/search/성산일출봉" target="_blank" class="kakao-link small">Seongsan</a></div>
+          <div class="tip-val"><strong>Hallasan</strong> — Seongpanak (6-8 hrs) or Gwaneumsa (8-10 hrs). 📅 Book knps.or.kr. <strong>Seongsan Ilchulbong</strong> — Sunrise Peak. ⏰ Arrive 5-6AM for sunrise. Fee ₩5,000. <strong>Bijarim Forest</strong> — ancient lava forest.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Beaches 🏠 <a href="https://map.kakao.com/link/search/하모해수욕장" target="_blank" class="kakao-link small">Hamo</a> · <a href="https://map.kakao.com/link/search/김녕해변" target="_blank" class="kakao-link small">Kimnyeong</a> · <a href="https://map.kakao.com/link/search/고남해변" target="_blank" class="kakao-link small">Konan</a></div>
+          <div class="tip-val"><strong>Hamo Beach</strong> — quiet, Moseulpo. <strong>Kimnyeong</strong> — turquoise, snorkeling. <strong>Konan</strong> — local snorkeling. <strong>Hahyo Black Sand</strong> — photography. Skip tourist crowds.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Waterfalls 🏠 <a href="https://map.kakao.com/link/search/천지연폭포" target="_blank" class="kakao-link small">Cheonjiyeon</a> · <a href="https://map.kakao.com/link/search/정방폭포" target="_blank" class="kakao-link small">Jeongbang</a> · <a href="https://map.kakao.com/link/search/쇠소깍" target="_blank" class="kakao-link small">Soesokkak</a></div>
+          <div class="tip-val"><strong>Cheonjiyeon</strong> — illuminated at night. <strong>Jeongbang</strong> — falls into sea. <strong>Soesokkak</strong> — estuary, raft rides. <strong>Jusangjeolli</strong> — basalt columns.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Black Pork 🏠 <a href="https://map.kakao.com/link/search/돈사돈" target="_blank" class="kakao-link small">Donsadon</a> · <a href="https://map.kakao.com/link/search/사계흑돼지" target="_blank" class="kakao-link small">Sagye</a> · <a href="https://map.kakao.com/link/search/하운가흑돼지" target="_blank" class="kakao-link small">Hawonga</a></div>
+          <div class="tip-val"><strong>돈사돈</strong> — no reservations. <strong>사계</strong> — tangerine kimchi. <strong>하운가흑돼지</strong> — ocean view. <strong>돌이랑흑돼지</strong> — clean, non-antibiotic.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seafood 🏠 <a href="https://map.kakao.com/link/search/내가리식당" target="_blank" class="kakao-link small">Negeori</a> · <a href="https://map.kakao.com/link/search/쌍둥이횟집" target="_blank" class="kakao-link small">Twins</a> · <a href="https://map.kakao.com/link/search/표선세화해녀의집" target="_blank" class="kakao-link small">Pyoseon</a> · <a href="https://map.kakao.com/link/search/오조해녀의집" target="_blank" class="kakao-link small">Ojo</a></div>
+          <div class="tip-val"><strong>내가리식당</strong> — cutlassfish. <strong>쌍둥이 횟집</strong> — 10-course. <strong>제주미향</strong> — ocean view. <strong>표선세화해녀의집</strong> — haenyeo, abalone porridge. <strong>오조해녀의집</strong> — haenyeo-run.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Haenyeo 🤿 <a href="https://map.kakao.com/link/search/법환해녀체험센터" target="_blank" class="kakao-link small">Beophwan</a> · <a href="https://map.kakao.com/link/search/해녀의부엌" target="_blank" class="kakao-link small">Kitchen</a></div>
+          <div class="tip-val"><strong>Beophwan Experience</strong> — hands-on diving, Jun-Oct, ₩30,000. 📅 Book. <strong>Haenyeo Kitchen</strong> — theatrical dining ₩49K-59K.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Pony 🐴 <a href="https://map.kakao.com/link/search/쇠와꽃승마장" target="_blank" class="kakao-link small">Steel Flower</a> · <a href="https://map.kakao.com/link/search/OK승마공원" target="_blank" class="kakao-link small">OK</a> · <a href="https://map.kakao.com/link/search/알프스포니승마장" target="_blank" class="kakao-link small">Alps</a></div>
+          <div class="tip-val"><strong>쇠와꽃승마장</strong> — beach riding. <strong>OK승마공원</strong> — beginner. <strong>알프스포니승마장</strong> — largest, kids. <strong>전망제주하늘</strong> — panoramic.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Markets 🏠 <a href="https://map.kakao.com/link/search/서귀포매일올레시장" target="_blank" class="kakao-link small">Olle Market</a> · <a href="https://map.kakao.com/link/search/서귀포향토오일장" target="_blank" class="kakao-link small">5-Day</a></div>
+          <div class="tip-val"><strong>Seogwipo Maeil Olle</strong> — daily since 1960s. <strong>Seogwipo Hyangto</strong> — 5-day market (dates 4/9).</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Tea/Coffee 🎯 <a href="https://map.kakao.com/link/search/오설록티박물관" target="_blank" class="kakao-link small">Osulloc</a> · <a href="https://map.kakao.com/link/search/서광차밭" target="_blank" class="kakao-link small">Seogwang</a> · <a href="https://map.kakao.com/link/search/월정리카페거리" target="_blank" class="kakao-link small">Woljeongri</a></div>
+          <div class="tip-val"><strong>Osulloc</strong> — green tea fields. <strong>서광차밭</strong> — less crowded. <strong>Woljeongri Cafe</strong> — ocean views.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Drinking 🏠 <a href="https://map.kakao.com/link/search/제주맥주양조장" target="_blank" class="kakao-link small">Beer Co</a> · <a href="https://map.kakao.com/link/search/한라산소주공장" target="_blank" class="kakao-link small">Soju</a> · <a href="https://map.kakao.com/link/search/제주달마루" target="_blank" class="kakao-link small">Winery</a></div>
+          <div class="tip-val"><strong>제주맥주양조장</strong> — island's first beer, tours Thu-Sun. <strong>한라산소주공장</strong> — 70-year soju, Fri-Sun. <strong>제주달마루</strong> — citrus wines.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIVE MUSIC ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)">
+        <span style="font-size:1.05rem;">🎵 Live Music — Local Scene</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+        <div class="tip-row">
+          <div class="tip-key">Seoul Indie Rock 🏠 <a href="https://map.kakao.com/link/search/ClubFF" target="_blank" class="kakao-link small">FF</a> · <a href="https://map.kakao.com/link/search/StrangeFruit" target="_blank" class="kakao-link small">Strange</a> · <a href="https://map.kakao.com/link/search/ClubSteelFace" target="_blank" class="kakao-link small">SteelFace</a> · <a href="https://map.kakao.com/link/search/RollingHall" target="_blank" class="kakao-link small">Rolling</a></div>
+          <div class="tip-val"><strong>Club FF</strong> — rock/punk since 1990s, ₩15K-25K. <strong>Strange Fruit</strong> — basement, shoegaze, since 2004. <strong>Club Steel Face</strong> — punk. <strong>Rolling Hall</strong> — bigger. <strong>Veloso</strong> — acoustics. <strong>Mudaeruk</strong> — emerging bands. ⏰ Shows 8PM.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seoul Jazz 🏠 <a href="https://map.kakao.com/link/search/ClubEvans" target="_blank" class="kakao-link small">Evans</a> · <a href="https://map.kakao.com/link/search/AllThatJazz" target="_blank" class="kakao-link small">AllThat</a> · <a href="https://map.kakao.com/link/search/AsomeGround" target="_blank" class="kakao-link small">Asome</a> · <a href="https://map.kakao.com/link/search/OLEO서울" target="_blank" class="kakao-link small">OLEO</a></div>
+          <div class="tip-val"><strong>Club Evans</strong> — Hongdae jazz 20+ yrs, ₩15K. <strong>All That Jazz</strong> — Korea's oldest since 1976. <strong>Asome Ground</strong> — Friday only ₩20K. <strong>OLEO</strong> — jam sessions. ⏰ 8:30PM.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Busan Live 🏠 <a href="https://map.kakao.com/link/search/HQBar" target="_blank" class="kakao-link small">HQ</a> · <a href="https://map.kakao.com/link/search/Ol55" target="_blank" class="kakao-link small">Ol55</a> · <a href="https://map.kakao.com/link/search/VinylUnderground" target="_blank" class="kakao-link small">Vinyl</a> · <a href="https://map.kakao.com/link/search/Ovantgarde" target="_blank" class="kakao-link small">Ovant</a></div>
+          <div class="tip-val"><strong>HQ Bar</strong> — "best stage", ocean views. <strong>Ol' 55</strong> — since 2006. <strong>Vinyl Underground</strong> — since 2002. <strong>Ovantgarde</strong> — PNU area.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Open Mic 📅</div>
+          <div class="tip-val"><strong>Tony's Aussie Bar</strong> — Monday (Itaewon). <strong>Rocky Mountain Tavern</strong> — Wednesday blues. <strong>DOJO Lounge</strong> — Tuesday (Noksapyeong).</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Find Shows</div>
+          <div class="tip-val"><strong>Indistreet</strong> — indistreet.com. <strong>Instagram</strong> — venue announcements. <strong>Melon Ticket Global</strong> — ticketing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BEST DINNERS ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)">
+        <span style="font-size:1.05rem;">🍖 Best Dinners — Expanded</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+<div class="tip-row">
+          <div class="tip-key">Seoul — Myeongdong <a href="https://map.kakao.com/link/search/왕비집명동본점" target="_blank" class="kakao-link small">Wangbijib</a> · <a href="https://map.kakao.com/link/search/육통령명동점" target="_blank" class="kakao-link small">Yuktongryeong</a> · <a href="https://map.kakao.com/link/search/몽벨리명동점" target="_blank" class="kakao-link small">Mongvely</a> · <a href="https://map.kakao.com/link/search/원당감자탕명동" target="_blank" class="kakao-link small">Wondang</a></div>
+          <div class="tip-val"><strong>왕비집</strong> — pork ribs, staff grills. <strong>육통령</strong> — tomahawk. <strong>몽벨리</strong> — AYCE. <strong>원당감자탕</strong> — 24-hour gamjatang. 📅 Book Michelin.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seoul — Hongdae <a href="https://map.kakao.com/link/search/홍대육지" target="_blank" class="kakao-link small">Hongdae</a> · <a href="https://map.kakao.com/link/search/고기꾼김춘배홍대본점" target="_blank" class="kakao-link small">Kochikun</a> · <a href="https://map.kakao.com/link/search/홍대조폭떡볶이2호점" target="_blank" class="kakao-link small">Jokbok</a> · <a href="https://map.kakao.com/link/search/보성회관홍대점" target="_blank" class="kakao-link small">Boseong</a></div>
+          <div class="tip-val"><strong>홍대육지</strong> — #1 BBQ aged. <strong>고기꾼 김춘배</strong> — hangjeongsal. <strong>홍대조폭떡볶이</strong> — late night. <strong>보성회관</strong> — 24-hour gukbap.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Busan — Seafood <a href="https://map.kakao.com/link/search/미포집해운대본점" target="_blank" class="kakao-link small">Mipojip</a> · <a href="https://map.kakao.com/link/search/밀락횟집" target="_blank" class="kakao-link small">Millak</a> · <a href="https://map.kakao.com/link/search/해림식당해운대" target="_blank" class="kakao-link small">Haerim</a> · <a href="https://map.kakao.com/link/search/프로간장게장해운대점" target="_blank" class="kakao-link small">Pro</a></div>
+          <div class="tip-val"><strong>미포집</strong> — haemuljang, 3 generations. <strong>밀락횟집</strong> — bridge views. <strong>해림식당</strong> — scallops, ocean view. <strong>프로간장게장</strong> — soy crab since 1980. 📅 Book Millak.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Jeju — Black Pork <a href="https://map.kakao.com/link/search/돈사돈" target="_blank" class="kakao-link small">Donsadon</a> · <a href="https://map.kakao.com/link/search/사계흑돼지" target="_blank" class="kakao-link small">Sagye</a> · <a href="https://map.kakao.com/link/search/하운가흑돼지" target="_blank" class="kakao-link small">Hawonga</a> · <a href="https://map.kakao.com/link/search/제주흑돼지" target="_blank" class="kakao-link small">Jeju Black</a></div>
+          <div class="tip-val"><strong>돈사돈</strong> — no reservations, famous. <strong>사계</strong> — tangerine kimchi. <strong>하운가흑돼지</strong> — ocean view. <strong>제주흑돼지</strong> — family-run.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Jeju — Seafood <a href="https://map.kakao.com/link/search/수희식당" target="_blank" class="kakao-link small">Suhee</a> · <a href="https://map.kakao.com/link/search/명진전복" target="_blank" class="kakao-link small">Myeongjin</a> · <a href="https://map.kakao.com/link/search/제주뚝배기" target="_blank" class="kakao-link small">Jeju Ttuk</a></div>
+          <div class="tip-val"><strong>수희식당</strong> — abalone ttukbaegi, opens 8AM. <strong>명진전복</strong> — ships nationally. <strong>제주뚝배기</strong> — Sunrise Peak area, 30+ yrs.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seoul Beyond Tourist <a href="https://map.kakao.com/link/search/소문난성수감자탕" target="_blank" class="kakao-link small">Seongsu</a> · <a href="https://map.kakao.com/link/search/한남동감자탕" target="_blank" class="kakao-link small">Hannam</a> · <a href="https://map.kakao.com/link/search/천하보쌈" target="_blank" class="kakao-link small">Cheonhab</a></div>
+          <div class="tip-val"><strong>소문난성수감자탕</strong> — 40+ yrs. <strong>한남동감자탕</strong> — 24-hour. <strong>천하보쌈</strong> — bossam.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seoul — Hongdae</div>
+          <div class="tip-val"><strong>홍대육지</strong> — #1 BBQ aged. <strong>고기꾼 김춘배</strong> — hangjeongsal. <strong>오레노 라멘</strong> — Michelin Bib. <strong>홍대조폭떡볶이</strong> — late night. <strong>보성회관</strong> — 24-hour gukbap.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Busan — Seafood</div>
+          <div class="tip-val"><strong>미포집</strong> — haemuljang, 3 generations. <strong>밀락횟집</strong> — bridge views. <strong>해림식당</strong> — scallops, ocean view. <strong>프로간장게장</strong> — soy crab since 1980. 📅 Book Millak.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Jeju — Black Pork</div>
+          <div class="tip-val"><strong>돈사돈</strong> — no reservations, famous. <strong>사계</strong> — tangerine kimchi. <strong>하운가흑돼지</strong> — ocean view. <strong>제주흑돼지</strong> — family-run.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Jeju — Seafood</div>
+          <div class="tip-val"><strong>수희식당</strong> — abalone ttukbaegi, opens 8AM. <strong>명진전복</strong> — ships nationally. <strong>제주뚝배기</strong> — Sunrise Peak area, 30+ yrs.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seoul Beyond Tourist</div>
+          <div class="tip-val"><strong>소문난성수감자탕</strong> — 40+ yrs. <strong>한남동감자탕</strong> — 24-hour. <strong>천하보쌈</strong> — bossam.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LOCAL DRINKING ===== -->
+  <div class="tips-section">
+    <div class="tips-category">
+      <div class="tips-cat-header" onclick="toggleTips(this)">
+        <span style="font-size:1.05rem;">🍺 Local Drinking Culture</span>
+        <span class="chev">▼</span>
+      </div>
+      <div class="tips-cat-body">
+        <div class="tip-row">
+          <div class="tip-key">Seoul Makgeolli 🏠 <a href="https://map.kakao.com/link/search/산울림1992" target="_blank" class="kakao-link small">Sanullim</a> · <a href="https://map.kakao.com/link/search/주막" target="_blank" class="kakao-link small">Jumak</a> · <a href="https://map.kakao.com/link/search/행복한집" target="_blank" class="kakao-link small">Haengbok</a></div>
+          <div class="tip-val"><strong>산울림1992</strong> — 200+ traditional alcohols. <strong>주막</strong> — near Wolgok. <strong>행복한집</strong> — hidden gem.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Seoul Craft Beer 🏠 <a href="https://map.kakao.com/link/search/SeoulBrewery" target="_blank" class="kakao-link small">SeoulBrew</a> · <a href="https://map.kakao.com/link/search/AmazingBrewing" target="_blank" class="kakao-link small">Amazing</a> · <a href="https://map.kakao.com/link/search/EuljiroBrewing" target="_blank" class="kakao-link small">Euljiro</a></div>
+          <div class="tip-val"><strong>Seoul Brewery</strong> — cozy terrace. <strong>Amazing Brewing</strong> — 30+ beers. <strong>Euljiro Brewing</strong> — neon + pizza.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Busan Soju 🏠</div>
+          <div class="tip-val"><strong>C1 Soju</strong> — Busan local. <strong>Daesun Soju</strong> — softer taste.</div>
+        </div>
+        <div class="tip-row">
+          <div class="tip-key">Drinking Rules</div>
+          <div class="tip-val">1. Cash preferred &nbsp; 2. Follow locals &nbsp; 3. Ask prices &nbsp; 4. Rounds order: dinner→pocha→drinking &nbsp; 5. Don't pour own &nbsp; 6. With seniors, turn away when drinking &nbsp; 7. Weekends crowded &nbsp; 8. Weekdays better</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end extra tips leg -->
+
 </div><!-- end container -->
 
 <nav class="mobile-nav" aria-label="Trip legs">
@@ -1661,6 +2003,7 @@
     <button class="mobile-nav-btn mnb-h" onclick="showLeg('h',this)">Seoul 2<br>Hongdae</button>
     <button class="mobile-nav-btn mnb-tips" onclick="showLeg('tips',this)">Tips &amp;<br>Food</button>
     <button class="mobile-nav-btn mnb-food" onclick="showLeg('fooddrink',this)">🍽<br>Dining</button>
+    <button class="mobile-nav-btn mnb-extra" onclick="showLeg('extra',this)">💡<br>Extra Tips</button>
   </div>
 </nav>
 
