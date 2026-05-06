@@ -57,6 +57,7 @@
   .tab-btn.t-j.active { background: var(--accent-jeju); }
   .tab-btn.t-h.active { background: var(--accent-hong); }
   .tab-btn.t-tips.active { background: #555; }
+  .tab-btn.t-food-guide.active { background: #b04a1e; }
   .leg { display: none; }
   .leg.active { display: block; }
 
@@ -223,6 +224,7 @@
   .mobile-nav-btn.mnb-j.active { border-top-color: var(--accent-jeju); color: var(--accent-jeju); }
   .mobile-nav-btn.mnb-h.active { border-top-color: var(--accent-hong); color: var(--accent-hong); }
   .mobile-nav-btn.mnb-tips.active { border-top-color: #555; color: #555; }
+  .mobile-nav-btn.mnb-food.active { border-top-color: #b04a1e; color: #b04a1e; }
 
   @media (max-width: 700px) {
     .mobile-nav { display: block; }
@@ -304,6 +306,7 @@
   <button class="tab-btn t-j" onclick="showLeg('j',this)">Jeju · Seogwipo</button>
   <button class="tab-btn t-h" onclick="showLeg('h',this)">Seoul 2 · Hongdae</button>
   <button class="tab-btn t-tips" onclick="showLeg('tips',this)">Essential Tips + Food Guide</button>
+  <button class="tab-btn t-food-guide" onclick="showLeg('fooddrink',this)">🍽 Food &amp; Drinks Guide</button>
 </div>
 
 <!-- ======================= SEOUL 1 ======================= -->
@@ -1275,6 +1278,361 @@
 
 </div>
 
+<!-- ======================= FOOD & DRINKS GUIDE ======================= -->
+<div id="leg-fooddrink" class="leg">
+
+  <div class="leg-intro" style="border-color: #d4a06a; background: #fdf6ee;">
+    <div class="subtitle">Your Complete Dining Guide</div>
+    <h2>Food &amp; Drinks Across All Four Legs</h2>
+    <p>Korea rewards curious eaters. This guide covers specific breakfast spots, dinner recommendations, and the best drinks at every stop — organised by city, with Kakao Maps links to make navigating easy. Every meal is an experience here.</p>
+  </div>
+
+  <!-- ===== SEOUL 1: MYEONGDONG ===== -->
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-seoul);">
+      <span style="font-size:1.05rem; color: var(--accent-seoul);">🏙 Seoul 1 — Myeongdong Breakfasts</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Hadongkwan <a href="https://map.kakao.com/link/search/하동관 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Open since 1939. Opens 7am.</strong> Serves exactly two dishes: gomtang (beef bone soup) and suyuk (boiled beef). Rich, milky broth with rice. The definition of one dish done perfectly. A deeply traditional Korean breakfast — warm, restorative, and historically significant. Closes at 4:30pm or when ingredients run out. ₩15,000–18,000.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Seowonjuk <a href="https://map.kakao.com/link/search/서원죽 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Korean porridge restaurant, open from 7:30am.</strong> The abalone porridge (전복죽) and ginseng chicken porridge are outstanding. Smooth, warming, and deeply nourishing. Perfect first morning in Korea when your body clock is off. About ₩12,000–16,000 per bowl.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Hansikwangbijib <a href="https://map.kakao.com/link/search/한식왕비집 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Authentic Korean breakfast 7:30–10:30am.</strong> Full Korean spread: rice, soup, banchan (side dishes), and grilled fish — the real Korean 백반 (baekban) breakfast. Excellent bulgogi and bibimbap at lunch and dinner too. One of the few places in Myeongdong serving a genuine Korean morning meal. Address: 15 Myeongdong 6-gil, Jung-gu.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Songjug <a href="https://map.kakao.com/link/search/송죽 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>50+ year old traditional porridge restaurant, opens 7am.</strong> Buckwheat rice and sesame oil cooked in beef broth. Small, old, unassuming — looks run-down, is immaculate inside. Classic Korean restorative food. Near Chungmuro-ro, Myeong-dong.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Convenience store morning</div>
+        <div class="tip-val">If you're leaving early for a day trip, grab from CU or GS25: triangle kimbap (₩1,500), onigiri, a hot egg dish, banana milk, and sikhye (sweet rice drink). Korea's convenience stores are genuinely excellent for this — not a fallback, an experience.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-seoul);">
+      <span style="font-size:1.05rem; color: var(--accent-seoul);">🍽 Seoul 1 — Myeongdong Dinners</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Myeongdong Kyoja <a href="https://map.kakao.com/link/search/명동교자" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Michelin Bib Gourmand since 2017.</strong> Famous for silky kalguksu (knife-cut noodles) in rich chicken broth and the dumplings (mandu). Queue moves fast. Order the ban-ban mandu (half spicy, half plain). Second branch near station exit 8 if the main queue is long. ₩10,000–13,000. Address: 29 Myeongdong 10-gil.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Yuktongryeong <a href="https://map.kakao.com/link/search/육통령 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Best Korean BBQ in Myeongdong, local-approved.</strong> Specialises in Jeju black pork — meaty, rich, charcoal-grilled — plus a thick-cut ribeye that's extraordinary. The restaurant your local host would send you to. Open 11:30am–1:30am. Address: 37-1 Myeongdong 8na-gil. Book ahead at weekends.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Odarijip <a href="https://map.kakao.com/link/search/오다리집 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Ganjang gejang (raw soy-marinated crab) specialist.</strong> This dish — known as the "rice thief" — is one of the most addictive things in Korean food. The soy marinade is deeply savoury and complex; you will eat three bowls of rice with it. 2-min walk from Myeongdong Station exit 6. Rare to find in this area.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Tosokchon <a href="https://map.kakao.com/link/search/토속촌 삼계탕" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Seoul's most famous samgyetang (ginseng chicken soup) since 1983.</strong> Whole young chicken stuffed with sticky rice, garlic, and jujube, simmered in ginseng broth. Near Gyeongbokgung — a 20-min trip from Myeongdong but worth it for Day 2 dinner. Open until 10pm. Queue moves quickly.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Hwanggeum Mokjang <a href="https://map.kakao.com/link/search/황금목장 명동" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Premium Korean BBQ right in Myeongdong.</strong> Expensive but exceptional — quality cuts, attentive staff who grill for you, and a slick interior. Great for a special night out without leaving the neighbourhood. Expect ₩40,000–60,000/person with drinks.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Ikseon-dong BBQ alley <a href="https://map.kakao.com/link/search/익선동 고기집" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>10-min walk from Gwangjang Market.</strong> The gogi (meat) street in Ikseon-dong's 1920s hanok village has dozens of BBQ spots in old converted homes. Grilled galbi or samgyeopsal inside a 100-year-old house is an experience money can't buy elsewhere. Go at 7–8pm. Lively, social, the real Seoul evening.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-seoul);">
+      <span style="font-size:1.05rem; color: var(--accent-seoul);">🍺 Seoul Drinks — Where to Drink</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Sanullim 1992 <a href="https://map.kakao.com/link/search/산울림1992" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Seoul's finest makgeolli bar. Walk-in only.</strong> Jumak-style traditional tavern in Hongdae. Extraordinary makgeolli list — order the spicy octopus somyeon to eat alongside. The atmosphere is a living piece of Korean drinking culture. Always a wait but always worth it. Best makgeolli bar in Korea.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Euljiro Brewing <a href="https://map.kakao.com/link/search/을지로브루잉" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>The jewel of the Euljiro craft beer scene.</strong> Session Seersucker IPA and Pink Chambray Saison are outstanding. Loud, sociable, sourdough pizza from the alley. The Hipjiro neighbourhood around it is one of the best evening bar crawl zones in Seoul — unmarked doors, neon, old hardware shops turned speakeasies.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Artmonster Euljiro &amp; Hongdae <a href="https://map.kakao.com/link/search/아트몬스터 을지로" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Award-winning craft beer, multiple Seoul locations.</strong> The peanut stout is extraordinary. Self-pour wristband system at some locations. Euljiro branch has retro Hong Kong cinema aesthetic. Hongdae branch has window seats overlooking the busiest K-pop street performance strip. ₩7,500/large beer.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Magpie Brewing <a href="https://map.kakao.com/link/search/맥파이 브루잉" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Itaewon and Hongdae locations.</strong> Their Ghost sour — a Jeju tangerine and coriander seed pale ale — is a Seoul classic. Relaxed indie vibe. The Itaewon original is cosy with a long tap list. Great for a session without heavy food.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Seoul Brewery Seongsu <a href="https://map.kakao.com/link/search/서울브루어리 성수" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Best taproom in Seongsu — industrial-chic, 20+ house beers.</strong> Salinger Rye IPA and Choco Loco Porter are standouts. The Brooklyn-of-Seoul neighbourhood pairs perfectly with craft beer. Visit on Day 4 when you're already in Seongsu. Busy Friday evenings.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Namsan Sool Club <a href="https://map.kakao.com/link/search/남산술클럽" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Premium Korean spirits bar near Itaewon.</strong> The place to explore sool (Korean alcohol) beyond basic soju — yakju, takju, small-batch Korean whisky, and artisanal makgeolli. English menu, knowledgeable bartenders. One of Seoul's most interesting drinking experiences if you want to go deep on Korean spirits culture.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Nogari Alley, Euljiro <a href="https://map.kakao.com/link/search/을지로 노가리골목" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>₩5,000 beer + dried fish. One of Seoul's most atmospheric drinking spots.</strong> This narrow alley of cheap plastic tables and ahjumma vendors has been serving cold OB beer and dried pollock strips since the 1980s. Standing room only late at night. The atmosphere — neon, noise, laughter — is pure Seoul. Go after 9pm.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BUSAN ===== -->
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-busan);">
+      <span style="font-size:1.05rem; color: var(--accent-busan);">🌊 Busan — Breakfasts</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Dwaeji Gukbap Alley, Seomyeon <a href="https://map.kakao.com/link/search/서면 돼지국밥거리" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Busan's essential breakfast ritual. Right next to your Lotte Hotel.</strong> A cluster of pork bone soup restaurants near Seomyeon Station serves dwaeji gukbap from early morning. Milky, rich, warming broth with sliced pork and rice. Season with salted shrimp (saeujeot), chives, and gochujang. A bowl costs ₩8,000–10,000. The way every Busan person starts their day.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Subyeon Choego Dwaeji Gukbap <a href="https://map.kakao.com/link/search/수변최고돼지국밥" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Open 24 hours. Multiple branches across Busan.</strong> One of the most popular gukbap spots — great if you're coming home late or leaving early. Choose plain dwaeji gukbap (thin pork slices, milky broth) or modeum gukbap (mixed with offal and blood sausage). ₩9,000/bowl. The main branch is at Suyeong-gu.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Geukdong Dwaeji Gukbap <a href="https://map.kakao.com/link/search/극동돼지국밥 해운대" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Best gukbap near Haeundae Beach.</strong> Lighter, clearer broth than the Seomyeon-style — more delicate flavour. Always crowded. Queue early. Great if you're spending a day at Haeundae. The 5-minute walk from the beach makes it a perfect morning start. ₩9,000.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Gukje Milmyeon <a href="https://map.kakao.com/link/search/국제밀면" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>One of the top three milmyeon restaurants in Busan. Opens early.</strong> Two-item menu: mulmilmyeon (cold broth noodles) and bibimmilmyeon (spicy sauce noodles). The chewy wheat noodles are exceptional. Add vinegar and mustard to the broth yourself. The ultimate Busan noodle experience — historically rooted in the Korean War. ₩9,000–10,000.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Choryang Milmyeon <a href="https://map.kakao.com/link/search/초량밀면" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>The original milmyeon institution in Busan. Near Busan Station.</strong> One of the three legendary milmyeon establishments — the granddaddy of the dish. 225 Jungang-daero, Choryang-dong, Dong-gu. Open 10am–10pm. Small, old, atmospheric. The bowl tastes of postwar Busan history.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-busan);">
+      <span style="font-size:1.05rem; color: var(--accent-busan);">🍽 Busan — Dinners</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Eonyang Bulgogi Busanjip <a href="https://map.kakao.com/link/search/언양불고기 부산집" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Michelin-listed. Near Gwangalli.</strong> Specialises in marinated Korean BBQ with thin-sliced beef — more refined than the standard pork belly BBQ experience. Outstanding quality meat, elegant but unfussy atmosphere. A night at Gwangalli Beach followed by dinner here is perfect.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Millak Raw Fish Town <a href="https://map.kakao.com/link/search/민락수변공원 횟집" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>A 10-storey hoe (raw fish) building on Gwangalli waterfront.</strong> Choose your live seafood from the tanks on the ground floor, have it prepared upstairs, then eat with direct Gwangan Bridge views. The freshest possible hoe (Korean sashimi) experience. Go around 7–8pm for the best bridge lights backdrop.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Dongnae Halmae Pajeon <a href="https://map.kakao.com/link/search/동래할매파전" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Four generations of Busan's most famous rice flour seafood pancake.</strong> Dongnae-style pajeon uses rice flour for a heavier, crispier pancake than the Seoul wheat-flour version — studded with fresh seafood (squid, oysters, green onion). Paired with cold makgeolli, this is one of the best food experiences in Busan. Book ahead.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Seomyeon dining streets <a href="https://map.kakao.com/link/search/서면 먹자골목" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>The most local dinner zone in Busan — right by your Lotte Hotel.</strong> The food alleys near Seomyeon Station pack in dakgalbi (spicy chicken with mozzarella), pojangmacha tents, late-night tteokbokki, and everything in between. No tourist markup. Students and office workers shoulder to shoulder. The best spontaneous Busan dinner.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Grilled clams at Cheongsapo <a href="https://map.kakao.com/link/search/청사포 조개구이" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>A hidden coastal village east of Haeundae.</strong> Sit at a table, grill your own clams, scallops, and cockles over a charcoal grate, with cold soju and the sea in front of you. Cheap, smoky, and unforgettable. The twin lighthouses of Cheongsapo behind you. One of the most atmospheric meals in Busan. ₩20,000–30,000 for a full spread.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Bay 101 Marina Bar <a href="https://map.kakao.com/link/search/Bay 101 부산" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Free entry, spectacular Busan skyline views.</strong> The yacht club bar at Haeundae has one of the most extraordinary city-lights views in Korea — Busan's reflective waterfront at night. Not a restaurant, but a great drinks stop before or after dinner. Dress up slightly; the crowd skews smart-casual.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== JEJU ===== -->
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-jeju);">
+      <span style="font-size:1.05rem; color: var(--accent-jeju);">🌋 Jeju — Breakfasts</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Myeongjin Jeonbok <a href="https://map.kakao.com/link/search/명진전복 제주" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Jeju's most famous abalone restaurant — open from early morning.</strong> Serves only four dishes: abalone porridge, grilled abalone, raw abalone, and abalone hot stone pot with rice. The porridge (jeonbok juk) is green-tinged, creamy, oceanic, and extraordinary. One of the most-mentioned restaurants on all of Jeju. Come early — queue builds fast. Address: 1282 Haemajihaean-ro, Gujwa-eup.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Seogwipo Maeil Olle Market <a href="https://map.kakao.com/link/search/서귀포매일올레시장" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Opens 7am. Best local food market in Jeju — near your Parnas Hotel.</strong> Fresh abalone, tangerines, black pork dumplings, gogi guksu (pork broth noodles) — the full Jeju morning market experience. Smaller than Dongmun but more authentic. Order abalone porridge from one of the stalls inside for the best breakfast in Seogwipo.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Gogi Guksu / Noodle Street <a href="https://map.kakao.com/link/search/제주 국수거리" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Jeju's signature noodle dish — pork broth guksu.</strong> A cluster of small noodle restaurants near Jeju City serves Jeju black pork broth guksu from early morning. Jamae Guksu (Sisters Noodles) is the most celebrated — topped with Jeju black pork slices in anchovy-pork broth. Simple, warming, local. ₩7,000–9,000.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">O'Sulloc Tea Museum café <a href="https://map.kakao.com/link/search/오설록 티뮤지엄" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>A unique Jeju morning experience on the way west.</strong> The O'Sulloc café opens early and serves matcha lattes, green tea ice cream, and seasonal tea sets surrounded by rolling tea field views. Not a traditional breakfast but deeply Jeju — and one of the most photogenic morning stops on the island. Go before the tour groups arrive.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-jeju);">
+      <span style="font-size:1.05rem; color: var(--accent-jeju);">🍽 Jeju — Dinners</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Heukdwaeji Sikdang <a href="https://map.kakao.com/link/search/흑돼지식당 서귀포" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>The definitive Jeju black pork dinner — in Seogwipo near your hotel.</strong> Staff wrap your jacket in a plastic bag before service starts. Pork belly and neck cuts grilled at the table, wrapped in perilla leaves with gochujang. Served with Jeju hallabong soju (citrus, lighter than mainland). This is the meal that defines the trip.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Samseonghyeol Haemultang <a href="https://map.kakao.com/link/search/삼성혈 해물탕" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Live seafood hot pot — the freshest possible haemultang experience.</strong> Serves one dish only: live seafood stew with your choice of carbs (ramyeon, udon, or rice) to finish the broth. Seafood is literally alive when it goes in the pot. Octopus, clams, crab, abalone in spicy broth. Non-spicy version available. Open 10am–10:30pm (closed 2:45–4pm). 20 Seondeong-ro 5-gil, Yeon-dong.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Galchi jorim restaurants, Seogwipo <a href="https://map.kakao.com/link/search/서귀포 갈치조림" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Jeju's signature hairtail fish (galchi) — only found here.</strong> Hairtail braised in a rich, slightly spicy soy-gochujang sauce with radish and vegetables. Unique to Jeju Island — you genuinely cannot get this the same way anywhere else in Korea. Eaten over multiple bowls of rice. One of the great one-stop regional dishes of Korea.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Dombedon Heukdwaeji <a href="https://map.kakao.com/link/search/돔베돈 흑돼지" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Another outstanding black pork option — different style.</strong> Serves dombedon — a Jeju-style thick-cut boiled black pork presented cold on a wooden board, with ssamjang and garlic. More elegant than the BBQ-at-table style; a different way to experience the same extraordinary ingredient. Very popular, book ahead.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Haenyeo's fresh catch, Seongsan <a href="https://map.kakao.com/link/search/성산 해녀 횟집" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Raw seafood directly from haenyeo divers — at the base of Seongsan Ilchulbong.</strong> After descending from Sunrise Peak, the female free-divers sell their catch from small stalls by the shore between 9–11am: abalone, sea urchin, conch. Sit on a plastic stool, eat raw seafood with soju, look out at the sea. The most unique breakfast or early lunch in Korea.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SEOUL 2: HONGDAE ===== -->
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-hong);">
+      <span style="font-size:1.05rem; color: var(--accent-hong);">🎵 Seoul 2 — Hongdae Breakfasts</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Donsubaek <a href="https://map.kakao.com/link/search/돈수백 홍대" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Open 24 hours. Hearty Korean pork rice breakfast near L7 Hotel.</strong> One of the most comforting Korean breakfast restaurants in Hongdae — open any hour. Perfect after a late club night or for an early start before the AREX to the airport. Pork rice soup and kimchi jjigae served all night. Address: 56 Hongik-ro 6-gil, Mapo-gu.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Mangwon Market morning <a href="https://map.kakao.com/link/search/망원시장" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>One stop from Hongdae — the most local morning food market in Seoul.</strong> Ajummas selling hand-rolled dumplings, fresh tteokbokki, kimbap, and banchan from early morning. Unvisited by tourists. Pick a spread, walk to the Han River bank, eat breakfast by the water. This is Seoul at its most authentic morning self.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Old Sister Café <a href="https://map.kakao.com/link/search/올드시스터 홍대" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Best French-style café breakfast in the Hongdae area.</strong> Exceptional pastries (consistently described as among the best in Seoul), hand-dripped coffee, and a chic but relaxed atmosphere. Perfect slow morning before a day out. Coffee often comes with free take-away after your meal. Address: 2F, 13 World Cup-ro 14-gil, Seogyo-dong.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">A'REX City Check-in morning <a href="https://map.kakao.com/link/search/홍대입구 도심공항터미널" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>On departure day</strong> — check in your bags at Hongik University Station (5:20am–7pm) and spend your last morning eating freely. Then: Mangwon Market or Donsubaek breakfast → last wander through Hongdae → AREX to Incheon. You won't be lugging a suitcase through the streets.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-hong);">
+      <span style="font-size:1.05rem; color: var(--accent-hong);">🍽 Seoul 2 — Hongdae / Itaewon Dinners</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Born &amp; Bred <a href="https://map.kakao.com/link/search/본앤브레드 서울" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Premium Hanwoo beef courses — the best BBQ sendoff in Seoul.</strong> Restaurant, butcher shop, and meat supplier in one. The Hanwoo courses feature raw Hanwoo tartare, cold noodles, and the finest table-grilled Korean beef in the city. Book 2–4 weeks ahead. Near Majang Meat Market. An extraordinary final dinner.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Tosokchon, near Gyeongbokgung <a href="https://map.kakao.com/link/search/토속촌 삼계탕" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Last day lunch or dinner classic.</strong> The famous samgyetang (ginseng chicken soup) restaurant — open since 1983. A whole chicken stuffed with rice, garlic, ginseng, and jujube dates in broth. Warming, nourishing, and the essential Korean comfort dish. 20-min from Hongdae. Open until 10pm. Queues move fast.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Ganjang Gejang restaurants <a href="https://map.kakao.com/link/search/간장게장 서울" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>"The rice thief" — known as the most addictive dish in Korean food.</strong> Raw crab marinated for days in soy sauce, garlic, and chilli — intensely savoury and complex. The sauce alone demands multiple bowls of rice. Try at Gamhongro or Dokkaebi near central Seoul. One of Korea's most celebrated and unusual dishes — don't leave without trying it.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Local BBQ alleys, Hongdae <a href="https://map.kakao.com/link/search/홍대 삼겹살 골목" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>2–3 blocks off the main drag, 30% cheaper and far better.</strong> The Mapo-gu streets around Hongdae and Hapjeong have excellent, unpretentious galbi and samgyeopsal restaurants stuffed with students and locals. The format: grill at your table, wrap in perilla leaves, somaek (soju bomb), repeat. End with a pojangmacha tent for fried snacks and final soju.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Leeum Museum dinner area <a href="https://map.kakao.com/link/search/리움미술관 이태원" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>After the Leeum Museum, explore Haebangchon (HBC) for dinner.</strong> 15-min uphill walk from Itaewon. This neighbourhood has the best Namsan Tower views from street cafés, craft bars, and international restaurants with real character. Try Korean-French fusion spots, izakayas, or a rooftop bar overlooking the city at dusk.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)" style="border-left: 4px solid var(--accent-hong);">
+      <span style="font-size:1.05rem; color: var(--accent-hong);">🍺 Seoul 2 — Hongdae Bars &amp; Nightlife Drinks</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Artmonster Hongdae <a href="https://map.kakao.com/link/search/아트몬스터 홍대" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Window tables overlooking the main Hongdae performance strip.</strong> Watch K-pop dance crews from your bar stool with an excellent IPA in hand. Tasting sets available for the indecisive. Fried chicken and sourdough pizza pair well with the hoppy lineup. Hits hardest on weekends when Hongdae's street energy is at its peak.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Seoul Brewery Hapjeong <a href="https://map.kakao.com/link/search/서울브루어리 합정" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>2-min walk from Hongdae bars. Beautiful taproom.</strong> One of the best-looking craft beer spaces in Seoul. Rotating tap list of house brews. More relaxed than the Seongsu location. Great for starting a night before heading deeper into Hongdae's alley bars.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">NB2 (Noise Basement) <a href="https://map.kakao.com/link/search/NB2 홍대" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>The hip-hop club of Hongdae since 1999.</strong> Two floors of hip-hop, EDM, and K-pop. Mixed crowd of locals and foreigners. Free or cheap entry before midnight on weekdays. Bring your actual passport (not a copy) — clubs check ID strictly. The go-to for a proper Hongdae club night.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Craft cocktail bars <a href="https://map.kakao.com/link/search/홍대 칵테일바" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>Seoul's cocktail scene is among Asia's best.</strong> Look for bars in the Hongdae alleys with small illuminated signs — many are up stairwells, above clothing shops. Excellent cocktails around ₩18,000–22,000. Try Korean ingredient-forward drinks (Jeju tangerine Daiquiri, makgeolli Negroni). Ask at your hotel front desk for the current unmissable hidden bar — these rotate quickly.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Pojangmacha finish <a href="https://map.kakao.com/link/search/홍대 포장마차" target="_blank" class="kakao-link small">Map</a></div>
+        <div class="tip-val"><strong>The perfect end to any Hongdae night.</strong> Canvas tent pubs near universities serve ₩4,000 soju and anju (tteokbokki, pajeon, odeng) until 2–3am. Find them in the alleys behind the main Hongdae shopping street. Sit on a plastic stool, order soju, talk to whoever's next to you. This is how every Korean night ends properly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DRINKS MASTERCLASS ===== -->
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">🥃 Korean Drinks — The Full Masterclass</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row">
+        <div class="tip-key">Soju — the basics</div>
+        <div class="tip-val"><strong>Korea's national spirit, 16–25% ABV.</strong> Original Chamisul (참이슬) and Jinro (진로) are the classic clear rice sojus — clean, slightly sweet, sharp finish. Fruit sojus (grapefruit, strawberry, peach, lychee) are sweeter and 13–14% — excellent entry point. Always served cold in small glasses. Never pour your own — pour for others first.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Makgeolli</div>
+        <div class="tip-val"><strong>Unfiltered milky rice wine, 5–8% ABV.</strong> Slightly fizzy, mildly sweet and tangy. Served in metal bowls or a large kettle (often you shake the bottle first). The traditional pairing is pajeon (pancake) — ideally at a mountain trailhead after hiking. Best tried at Sanullim 1992 (Seoul) or Gwangjang Market. Try premium artisanal versions at Namsan Sool Club.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Somaek</div>
+        <div class="tip-val"><strong>The Korean bomb drink — the way most Koreans actually drink at dinner.</strong> Pour a shot of soju into half a glass of beer. Classic ratio: 3:7. Stir by spinning the shot glass with two chopsticks (the "tornado" method). Tastes cleaner and lighter than either drink alone. Order at any Korean BBQ restaurant — it's the default dinner drink.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Hallabong Soju</div>
+        <div class="tip-val"><strong>Jeju-specific citrus soju — lighter and more aromatic than mainland soju.</strong> Made with Jeju's famous hallabong tangerine. The defining Jeju drink — order it automatically with black pork BBQ. Also available in Jeju tangerine makgeolli, which is excellent.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Korean craft beer</div>
+        <div class="tip-val"><strong>The scene has exploded in quality.</strong> Best breweries: Magpie (sour specialists — try The Ghost), Euljiro Brewing (IPAs and Saisons), Artmonster (peanut stout is extraordinary), Seoul Brewery (Rye IPA, Choco Loco Porter), Amazing Brewing Co (experimental, Seongsu flagship). All available in taprooms across Seoul. ₩7,500–12,000/pint.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Sikhye</div>
+        <div class="tip-val"><strong>Sweet, cloudy fermented rice punch — the non-alcoholic essential.</strong> Served cold at jjimjilbang and traditional restaurants. Made from malted barley and rice with a slightly sweet, clean flavour. The classic jjimjilbang food pairing is sikhye + boiled egg. A genuine cultural institution.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Korean coffee culture</div>
+        <div class="tip-val"><strong>World-class specialty coffee across Seoul.</strong> Top roasters and cafés: Anthracite (Hongdae/Hapjeong — industrial-chic, outstanding single-origin), Fritz Coffee (Mapo — pastel, precise, exceptional), Felt Coffee (Itaewon — minimal, careful). These are the cafés that compete internationally. Seongsu has a dozen equally excellent new-wave coffee shops. Budget ₩6,000–8,000 for a specialty pour.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-key">Maekju culture</div>
+        <div class="tip-val"><strong>Mass-market Korean lager — Hite, Cass, Terra, Kloud.</strong> Cheap (₩3,000–5,000), served everywhere. The standard pairing with chimaek (fried chicken) and dried snacks at a pojangmacha. Terra is generally considered the best of the mainstream lagers. Kloud uses 100% malt and is slightly richer. Upgrade to craft when you can, but know the local lagers too.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end food & drinks leg -->
+
 </div><!-- end container -->
 
 <nav class="mobile-nav" aria-label="Trip legs">
@@ -1284,6 +1642,7 @@
     <button class="mobile-nav-btn mnb-j" onclick="showLeg('j',this)">Jeju</button>
     <button class="mobile-nav-btn mnb-h" onclick="showLeg('h',this)">Seoul 2<br>Hongdae</button>
     <button class="mobile-nav-btn mnb-tips" onclick="showLeg('tips',this)">Tips &amp;<br>Food</button>
+    <button class="mobile-nav-btn mnb-food" onclick="showLeg('fooddrink',this)">🍽<br>Dining</button>
   </div>
 </nav>
 
