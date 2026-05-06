@@ -1,5 +1,5 @@
 {
-  "name": "KR 2026 Planning App",
+  "name": "KR '26 - Planning App",
   "short_name": "KR '26",
   "description": "Planning for South Korea trip.",
   "start_url": ".",

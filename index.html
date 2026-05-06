@@ -3,15 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>South Korea Deep Dive Itinerary</title>
+<title>South Korea Itinerary</title>
 <meta name="description" content="Plan Your South Korea trip.">
 <meta name="theme-color" content="#FF5C4D">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+      });
+    }
+  </script>
 
-<style>
+  <style>
   :root {
     --bg: #faf9f7;
     --surface: #ffffff;
@@ -20,7 +27,7 @@
     --border2: #d4cfc5;
     --text: #1a1814;
     --text2: #5c574e;
-    --text3: #9c978e;
+    --text3: #7a756a;
     --accent-seoul: #2563a8;
     --accent-busan: #0d7a5c;
     --accent-jeju: #b04a1e;
@@ -79,7 +86,7 @@
 
   /* DAY CARDS */
   .day-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
-  .day-header { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; cursor: pointer; }
+  .day-header { display: flex; align-items: flex-start; gap: 14px; padding: 20px; cursor: pointer; min-height: 64px; }
   .day-header:hover { background: var(--surface2); }
   .day-num { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; min-width: 50px; padding-top: 3px; }
   .day-info { flex: 1; }
@@ -93,6 +100,8 @@
   .t-night { background: var(--tag-night); color: var(--tag-night-t); }
   .t-active { background: var(--tag-active); color: var(--tag-active-t); }
   .chev { font-size: 12px; color: var(--text3); padding-top: 4px; transition: transform 0.2s; }
+  .day-card.today { border-left: 4px solid var(--accent-seoul); }
+  .day-card.today .day-header { background: var(--surface2); }
 
   /* DAY BODY */
   .day-body { display: none; border-top: 1px solid var(--border); }
@@ -208,6 +217,7 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    scroll-snap-type: x mandatory;
   }
   .mobile-nav-inner::-webkit-scrollbar { display: none; }
   .mobile-nav-btn {
@@ -224,6 +234,7 @@
     white-space: nowrap;
     transition: all 0.15s;
     letter-spacing: 0.3px;
+    scroll-snap-align: center;
   }
   .mobile-nav-btn.active { color: var(--text); }
   .mobile-nav-btn.mnb-s1.active { border-top-color: var(--accent-seoul); color: var(--accent-seoul); }
@@ -332,7 +343,7 @@
   </div>
 
   <!-- DAY 1 -->
-  <div class="day-card">
+  <div class="day-card" data-day="1">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-seoul)">Day 1</div>
       <div class="day-info">
@@ -371,7 +382,7 @@
   </div>
 
   <!-- DAY 2 -->
-  <div class="day-card">
+  <div class="day-card" data-day="2">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-seoul)">Day 2</div>
       <div class="day-info">
@@ -436,7 +447,7 @@
   </div>
 
   <!-- DAY 3 -->
-  <div class="day-card">
+  <div class="day-card" data-day="3">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-seoul)">Day 3</div>
       <div class="day-info">
@@ -487,7 +498,7 @@
   </div>
 
   <!-- DAY 4 -->
-  <div class="day-card">
+  <div class="day-card" data-day="4">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-seoul)">Day 4</div>
       <div class="day-info">
@@ -539,7 +550,7 @@
   </div>
 
   <!-- DAY 5 -->
-  <div class="day-card">
+  <div class="day-card" data-day="5">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-seoul)">Day 5</div>
       <div class="day-info">
@@ -625,7 +636,7 @@
   </div>
 
   <!-- BUSAN DAY 1 -->
-  <div class="day-card">
+  <div class="day-card" data-day="6">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-busan)">Day 1</div>
       <div class="day-info">
@@ -668,7 +679,7 @@
   </div>
 
   <!-- BUSAN DAY 2 -->
-  <div class="day-card">
+  <div class="day-card" data-day="7">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-busan)">Day 2</div>
       <div class="day-info">
@@ -721,7 +732,7 @@
   </div>
 
   <!-- BUSAN DAY 3 -->
-  <div class="day-card">
+  <div class="day-card" data-day="8">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-busan)">Day 3</div>
       <div class="day-info">
@@ -775,7 +786,7 @@
   </div>
 
   <!-- BUSAN DAY 4 -->
-  <div class="day-card">
+  <div class="day-card" data-day="9">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-busan)">Day 4</div>
       <div class="day-info">
@@ -845,7 +856,7 @@
   </div>
 
   <!-- JEJU DAY 1 -->
-  <div class="day-card">
+  <div class="day-card" data-day="10">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-jeju)">Day 1</div>
       <div class="day-info">
@@ -888,7 +899,7 @@
   </div>
 
   <!-- JEJU DAY 2 -->
-  <div class="day-card">
+  <div class="day-card" data-day="11">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-jeju)">Day 2</div>
       <div class="day-info">
@@ -930,7 +941,7 @@
   </div>
 
   <!-- JEJU DAY 3 -->
-  <div class="day-card">
+  <div class="day-card" data-day="12">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-jeju)">Day 3</div>
       <div class="day-info">
@@ -986,7 +997,7 @@
   </div>
 
   <!-- JEJU DAY 4 -->
-  <div class="day-card">
+  <div class="day-card" data-day="13">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-jeju)">Day 4</div>
       <div class="day-info">
@@ -1059,7 +1070,7 @@
   </div>
 
   <!-- HONG DAY 1 -->
-  <div class="day-card">
+  <div class="day-card" data-day="14">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-hong)">Day 1</div>
       <div class="day-info">
@@ -1095,7 +1106,7 @@
   </div>
 
   <!-- HONG DAY 2 -->
-  <div class="day-card">
+  <div class="day-card" data-day="15">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-hong)">Day 2</div>
       <div class="day-info">
@@ -1132,7 +1143,7 @@
   </div>
 
   <!-- HONG DAY 3 -->
-  <div class="day-card">
+  <div class="day-card" data-day="16">
     <div class="day-header" onclick="toggleDay(this)">
       <div class="day-num" style="color:var(--accent-hong)">Day 3</div>
       <div class="day-info">
@@ -1658,16 +1669,16 @@ function showLeg(id, btn) {
   document.querySelectorAll('.leg').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn, .mobile-nav-btn').forEach(el => el.classList.remove('active'));
   document.getElementById('leg-' + id).classList.add('active');
-  // Activate matching buttons in both tab bar and mobile nav
   document.querySelectorAll('[onclick*="showLeg(\'' + id + '\'"]').forEach(el => el.classList.add('active'));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function toggleDay(header) {
+function toggleDay(header, save = true) {
   const body = header.nextElementSibling;
   const chev = header.querySelector('.chev');
   const isOpen = body.classList.contains('open');
   body.classList.toggle('open', !isOpen);
   chev.style.transform = isOpen ? '' : 'rotate(180deg)';
+  if (save) saveExpandedState();
 }
 function toggleTips(header) {
   const body = header.nextElementSibling;
@@ -1676,6 +1687,44 @@ function toggleTips(header) {
   body.classList.toggle('open', !isOpen);
   chev.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
+function saveExpandedState() {
+  const expanded = [];
+  document.querySelectorAll('.day-body.open').forEach(el => {
+    const card = el.closest('.day-card');
+    if (card && card.dataset.day) expanded.push(card.dataset.day);
+  });
+  localStorage.setItem('expandedDays', JSON.stringify(expanded));
+}
+function restoreExpandedState() {
+  const expanded = JSON.parse(localStorage.getItem('expandedDays') || '[]');
+  expanded.forEach(dayNum => {
+    const card = document.querySelector('.day-card[data-day="' + dayNum + '"]');
+    if (card) {
+      const header = card.querySelector('.day-header');
+      const body = card.querySelector('.day-body');
+      const chev = card.querySelector('.chev');
+      body.classList.add('open');
+      chev.style.transform = 'rotate(180deg)';
+    }
+  });
+}
+function initTodayIndicator() {
+  const startDate = new Date('2026-05-07');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diffTime = today - startDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+  if (diffDays >= 1 && diffDays <= 16) {
+    const todayCard = document.querySelector('.day-card[data-day="' + diffDays + '"]');
+    if (todayCard) {
+      todayCard.classList.add('today');
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  restoreExpandedState();
+  initTodayIndicator();
+});
 </script>
 </body>
 </html>
