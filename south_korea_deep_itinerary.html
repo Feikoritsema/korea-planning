@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South Korea Deep Dive Itinerary</title>
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --surface2: #f4f2ee;
+    --border: #e8e4dc;
+    --border2: #d4cfc5;
+    --text: #1a1814;
+    --text2: #5c574e;
+    --text3: #9c978e;
+    --accent-seoul: #2563a8;
+    --accent-busan: #0d7a5c;
+    --accent-jeju: #b04a1e;
+    --accent-hong: #6b3fa0;
+    --tag-nature: #d4edda;
+    --tag-nature-t: #1a5c2e;
+    --tag-food: #fde8d4;
+    --tag-food-t: #7a3010;
+    --tag-culture: #dde8f8;
+    --tag-culture-t: #1a3c6e;
+    --tag-shop: #efe8f8;
+    --tag-shop-t: #4a1a7a;
+    --tag-night: #f8e8f0;
+    --tag-night-t: #7a1a4a;
+    --tag-active: #e8f4e8;
+    --tag-active-t: #1a4a1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* HEADER */
+  .trip-header { text-align: center; padding: 3rem 1rem 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+  .trip-title { font-size: 2.4rem; font-weight: normal; letter-spacing: -0.5px; color: var(--text); }
+  .trip-subtitle { font-size: 1rem; color: var(--text2); margin-top: 0.5rem; font-family: sans-serif; letter-spacing: 0.5px; }
+  .route-bar { display: flex; align-items: center; justify-content: center; gap: 0; margin-top: 1.5rem; flex-wrap: wrap; }
+  .route-node { font-family: sans-serif; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; color: white; }
+  .route-arrow { font-size: 14px; color: var(--text3); padding: 0 4px; }
+  .rn-s1 { background: var(--accent-seoul); }
+  .rn-b { background: var(--accent-busan); }
+  .rn-j { background: var(--accent-jeju); }
+  .rn-h { background: var(--accent-hong); }
+
+  /* TABS */
+  .tabs { display: flex; gap: 6px; margin-bottom: 2rem; flex-wrap: wrap; }
+  .tab-btn { font-family: sans-serif; font-size: 13px; padding: 8px 18px; border-radius: 20px; border: 1.5px solid var(--border2); background: var(--surface); color: var(--text2); cursor: pointer; transition: all 0.2s; }
+  .tab-btn:hover { border-color: var(--text3); }
+  .tab-btn.active { color: white; border-color: transparent; }
+  .tab-btn.t-s1.active { background: var(--accent-seoul); }
+  .tab-btn.t-b.active { background: var(--accent-busan); }
+  .tab-btn.t-j.active { background: var(--accent-jeju); }
+  .tab-btn.t-h.active { background: var(--accent-hong); }
+  .tab-btn.t-tips.active { background: #555; }
+  .leg { display: none; }
+  .leg.active { display: block; }
+
+  /* LEG INTRO */
+  .leg-intro { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .leg-intro h2 { font-size: 1.5rem; font-weight: normal; margin-bottom: 0.4rem; }
+  .leg-intro .subtitle { font-family: sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 0.8rem; }
+  .leg-intro p { font-size: 0.95rem; color: var(--text2); line-height: 1.7; }
+  .stay-options { display: flex; gap: 10px; margin-top: 1rem; flex-wrap: wrap; }
+  .stay-card { font-family: sans-serif; font-size: 12px; padding: 6px 12px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--border); color: var(--text2); }
+  .stay-card strong { color: var(--text); display: block; font-size: 12px; margin-bottom: 2px; }
+
+  /* DAY CARDS */
+  .day-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .day-header { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; cursor: pointer; }
+  .day-header:hover { background: var(--surface2); }
+  .day-num { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; min-width: 50px; padding-top: 3px; }
+  .day-info { flex: 1; }
+  .day-title { font-size: 1.05rem; font-weight: normal; color: var(--text); }
+  .day-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
+  .tag { font-family: sans-serif; font-size: 11px; padding: 2px 9px; border-radius: 10px; font-weight: 500; }
+  .t-nature { background: var(--tag-nature); color: var(--tag-nature-t); }
+  .t-food { background: var(--tag-food); color: var(--tag-food-t); }
+  .t-culture { background: var(--tag-culture); color: var(--tag-culture-t); }
+  .t-shop { background: var(--tag-shop); color: var(--tag-shop-t); }
+  .t-night { background: var(--tag-night); color: var(--tag-night-t); }
+  .t-active { background: var(--tag-active); color: var(--tag-active-t); }
+  .chev { font-size: 12px; color: var(--text3); padding-top: 4px; transition: transform 0.2s; }
+
+  /* DAY BODY */
+  .day-body { display: none; border-top: 1px solid var(--border); }
+  .day-body.open { display: block; }
+  .section-label { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); padding: 14px 20px 6px; }
+  .activity { display: grid; grid-template-columns: 80px 1fr; gap: 0 16px; padding: 10px 20px; border-bottom: 1px solid var(--border); }
+  .activity:last-child { border-bottom: none; }
+  .act-time { font-family: sans-serif; font-size: 11px; color: var(--text3); padding-top: 3px; line-height: 1.4; }
+  .act-main { }
+  .act-name { font-size: 1rem; color: var(--text); margin-bottom: 3px; }
+  .act-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.6; }
+  .act-tip { font-family: sans-serif; font-size: 0.8rem; color: #7a6030; background: #fdf6e3; border-left: 3px solid #e8c84a; padding: 6px 10px; margin-top: 7px; border-radius: 0 5px 5px 0; }
+  .act-tip::before { content: "Tip: "; font-weight: 600; }
+  .act-warn { font-family: sans-serif; font-size: 0.8rem; color: #7a2020; background: #fdf0f0; border-left: 3px solid #e84a4a; padding: 6px 10px; margin-top: 7px; border-radius: 0 5px 5px 0; }
+  .act-warn::before { content: "Book ahead: "; font-weight: 600; }
+
+  /* OPTIONS */
+  .options-block { margin: 10px 20px 14px; }
+  .options-title { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+  .option-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .option-card { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: var(--surface2); }
+  .option-label { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--text3); margin-bottom: 4px; }
+  .option-name { font-size: 0.9rem; font-weight: bold; color: var(--text); margin-bottom: 4px; }
+  .option-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.5; }
+
+  /* FOOD SECTION */
+  .food-block { margin: 0 20px 14px; padding: 14px 16px; background: var(--surface2); border-radius: 8px; border: 1px solid var(--border); }
+  .food-block-title { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); margin-bottom: 8px; }
+  .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; }
+  .food-item { font-size: 0.85rem; color: var(--text2); padding: 3px 0; border-bottom: 1px solid var(--border); }
+  .food-item strong { color: var(--text); }
+  .food-item span { color: var(--text3); font-size: 0.78rem; }
+  .restaurant-rec { margin: 10px 0 0; }
+  .rest-label { font-family: sans-serif; font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 5px; }
+  .rest-item { font-size: 0.83rem; color: var(--text2); padding: 2px 0; }
+  .rest-item strong { color: var(--text); }
+
+  /* DRINK SECTION */
+  .drink-block { margin: 0 20px 14px; padding: 12px 16px; background: #f9f4fc; border-radius: 8px; border: 1px solid #e0d4f0; }
+  .drink-block-title { font-family: sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #7a3a9a; margin-bottom: 8px; }
+
+  /* TIPS SECTION */
+  .tips-section { }
+  .tips-category { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .tips-cat-header { padding: 14px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .tips-cat-header:hover { background: var(--surface2); }
+  .tips-cat-title { font-size: 1.05rem; }
+  .tips-cat-body { display: none; border-top: 1px solid var(--border); }
+  .tips-cat-body.open { display: block; }
+  .tip-row { display: grid; grid-template-columns: 110px 1fr; gap: 0 14px; padding: 10px 20px; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+  .tip-row:last-child { border-bottom: none; }
+  .tip-key { font-family: sans-serif; font-size: 11px; font-weight: 700; color: var(--text3); padding-top: 3px; line-height: 1.4; }
+  .tip-val { color: var(--text2); line-height: 1.6; }
+  .tip-val strong { color: var(--text); }
+
+  /* FOOD GUIDE */
+  .food-guide { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+  .fg-header { padding: 14px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .fg-header:hover { background: var(--surface2); }
+  .fg-body { display: none; border-top: 1px solid var(--border); }
+  .fg-body.open { display: block; }
+  .fg-item { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+  .fg-item:last-child { border-bottom: none; }
+  .fg-dish { font-size: 0.95rem; font-weight: bold; color: var(--text); }
+  .fg-where { font-family: sans-serif; font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .fg-desc { font-size: 0.85rem; color: var(--text2); margin-top: 4px; line-height: 1.5; }
+
+  @media (max-width: 600px) {
+    .food-grid { grid-template-columns: 1fr; }
+    .option-cards { grid-template-columns: 1fr; }
+    .activity { grid-template-columns: 65px 1fr; }
+    .tip-row { grid-template-columns: 80px 1fr; }
+    .trip-title { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="trip-header">
+  <div class="trip-title">South Korea Deep Dive</div>
+  <div class="trip-subtitle">Full itinerary with options · 16 nights · Food · Nature · Culture · Nightlife</div>
+  <div class="route-bar">
+    <span class="route-node rn-s1">Seoul 1 — Myeongdong (5N)</span>
+    <span class="route-arrow">→</span>
+    <span class="route-node rn-b">Busan (4N)</span>
+    <span class="route-arrow">→</span>
+    <span class="route-node rn-j">Jeju / Seogwipo (4N)</span>
+    <span class="route-arrow">→</span>
+    <span class="route-node rn-h">Seoul 2 — Hongdae (3N)</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn t-s1 active" onclick="showLeg('s1',this)">Seoul 1 · Myeongdong</button>
+  <button class="tab-btn t-b" onclick="showLeg('b',this)">Busan</button>
+  <button class="tab-btn t-j" onclick="showLeg('j',this)">Jeju · Seogwipo</button>
+  <button class="tab-btn t-h" onclick="showLeg('h',this)">Seoul 2 · Hongdae</button>
+  <button class="tab-btn t-tips" onclick="showLeg('tips',this)">Essential Tips + Food Guide</button>
+</div>
+
+<!-- ======================= SEOUL 1 ======================= -->
+<div id="leg-s1" class="leg active">
+  <div class="leg-intro">
+    <div class="subtitle">Leg 1 · 5 Nights</div>
+    <h2>Seoul — Myeongdong</h2>
+    <p>Myeongdong is the most convenient first base in Seoul — chaotic, bright, touristy, and surrounded by some of the city's best sightseeing, food, and nightlife. The royal palace corridor, historic markets, hidden neighbourhoods, and Bukhansan National Park are all within easy reach. Use these 5 nights to build a rhythm between the big sights and the quieter, more local corners Seoul rewards curious visitors with.</p>
+    <div class="stay-options">
+      <div class="stay-card"><strong>Luxury</strong>Lotte Hotel Seoul — connected to Lotte Mall, incredible location</div>
+      <div class="stay-card"><strong>Mid-range</strong>Ibis Styles Myeongdong — excellent value, central</div>
+      <div class="stay-card"><strong>Local feel</strong>Moxy Seoul Insadong — boutique, near Ikseon-dong</div>
+      <div class="stay-card"><strong>Budget</strong>Stay on a hill in Seochon or Ikseon-dong for atmosphere</div>
+    </div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-seoul)">Day 1</div>
+      <div class="day-info">
+        <div class="day-title">Arrival + Myeongdong Night Market + Noraebang</div>
+        <div class="day-tags"><span class="tag t-food">food</span><span class="tag t-night">nightlife</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="section-label">Getting into Seoul</div>
+      <div class="activity">
+        <div class="act-time">Airport</div>
+        <div class="act-main">
+          <div class="act-name">AREX Express from Incheon</div>
+          <div class="act-desc">43 minutes direct to Hongdae or Seoul Station. Use T-money card. Buy a pocket WiFi or SIM at the airport. The express train is far faster than a taxi and costs around ₩9,500.</div>
+          <div class="act-tip">Pick up T-money at any convenience store or subway booth. It works on every subway, bus, and even most taxis across all of Korea.</div>
+        </div>
+      </div>
+      <div class="section-label">Evening</div>
+      <div class="activity">
+        <div class="act-time">From 3pm</div>
+        <div class="act-main">
+          <div class="act-name">Myeongdong Night Market</div>
+          <div class="act-desc">The street market ignites from around 3pm, with hundreds of vendors lining the walking street and spilling into alleys. Your first-night orientation in Korean food: tteokbokki (spicy rice cakes), hotteok (sweet brown sugar pancake), dakgangjeong (glazed fried chicken bites), odeng (fish cake skewers on sticks with warm broth), and tornado potatoes.</div>
+          <div class="act-tip">The street right off the main drag — Kalguksu Alley — has excellent hand-cut noodle restaurants for only ₩9,000–11,000. Myeongdong Kyoja (Michelin Bib Gourmand since 2017) is here — expect queues, but a second branch opened near the station exit 8.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Night</div>
+        <div class="act-main">
+          <div class="act-name">Coin Noraebang</div>
+          <div class="act-desc">The jet-lag cure: a private karaoke room where you pay per song. "Coin noraebangs" charge ₩500–1,000 per song, they never close, and they're one of Korea's most joyful social institutions. Pick English-language songs or attempt a Korean ballad. No judgement. Snacks and soju optional but recommended.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-seoul)">Day 2</div>
+      <div class="day-info">
+        <div class="day-title">Royal Palace + Hanok Villages + Gwangjang Market</div>
+        <div class="day-tags"><span class="tag t-culture">culture</span><span class="tag t-food">food</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="section-label">Morning — Palaces</div>
+      <div class="options-block">
+        <div class="options-title">Choose your palace (or do both — they're 10 min apart)</div>
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Option A — Grand & Iconic</div>
+            <div class="option-name">Gyeongbokgung Palace</div>
+            <div class="option-desc">Seoul's largest palace (1394). Arrive at 10am for the elaborate Changing of the Guard. Rent a hanbok from nearby shops — wearing one gets you <strong>free entry</strong> to all royal palaces. The National Folk Museum is free inside the grounds.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Option B — More Beautiful, Less Crowded</div>
+            <div class="option-name">Changdeokgung + Secret Garden</div>
+            <div class="option-desc">UNESCO-listed, widely considered the "most Korean" palace. The Secret Garden (Huwon) — 78 acres of royal pleasure garden — is only accessible by guided tour (English available). Only 100 visitors per slot. Stunning in any season.</div>
+            <div class="option-desc" style="margin-top:6px"><em>Book Secret Garden tickets well in advance at <strong>cdg.go.kr</strong>. Tickets: ₩5,000 on top of ₩3,000 palace entry. The ₩6,000 Royal Palace Combo Pass covers all 4 palaces + Jongmyo Shrine for 6 months — great value.</em></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-label">Late Morning</div>
+      <div class="activity">
+        <div class="act-time">11am–1pm</div>
+        <div class="act-main">
+          <div class="act-name">Seochon + Tongin Market</div>
+          <div class="act-desc">West of Gyeongbokgung lies Seochon — one of Seoul's oldest and most soulful neighbourhoods. Narrow alleys between 100-year-old hanok homes, local cafés, art studios, and galleries that still feel lived-in rather than tourist-packaged. The Tongin Market yeopjeon dosirak experience is unmissable: pay ₩5,000 at the Dosirak Café, receive old brass coins (yeopjeon), and use them at different stalls to assemble your own lunchbox — tteokbokki, fish cake, dumplings, rice balls. Eat in the upstairs hanok space.</div>
+          <div class="act-tip">11am–1pm is the perfect window at Tongin Market. The best stalls run out of ingredients by 2pm.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Alt: 11am</div>
+        <div class="act-main">
+          <div class="act-name">Bukchon Hanok Village</div>
+          <div class="act-desc">North of Changdeokgung, a hillside of preserved Joseon-era homes with tiled rooftops and stone alley views. More photogenic and more famous than Seochon, but busier. Wear comfortable shoes — it's hilly. Combine with nearby Samcheong-dong for cafés and gallery-hopping.</div>
+          <div class="act-tip">Go weekday mornings to beat crowds. Residents still live here and the district has posted quiet-hour requests.</div>
+        </div>
+      </div>
+      <div class="section-label">Afternoon</div>
+      <div class="activity">
+        <div class="act-time">2–5pm</div>
+        <div class="act-main">
+          <div class="act-name">Gwangjang Market</div>
+          <div class="act-desc">Seoul's oldest continuously operating market (est. 1905), famous from Netflix Street Food: Asia. The 2nd floor food alley is the main event. Eat standing or perched at tiny stalls elbow-to-elbow with locals.<br><br><strong>What to eat:</strong> mayak gimbap (tiny "drug" rice rolls — one roll is never enough), bindaetteok (mung bean pancakes, the market's signature — pair with makgeolli ₩3,000/bowl), yukhoe (fresh beef tartare in sesame oil, served with pear — try the yukhoe + nakji set ₩20,000), japchae, and kalguksu. Budget ₩20,000–30,000 to eat properly.</div>
+          <div class="act-tip">The grandmother vendors at bindaetteok stall 11 are legendary. Visit weekday 12–2pm for the fullest market-life atmosphere. The market closes on Sundays.</div>
+        </div>
+      </div>
+      <div class="section-label">Evening</div>
+      <div class="activity">
+        <div class="act-time">7pm+</div>
+        <div class="act-main">
+          <div class="act-name">Ikseon-dong for drinks + Korean BBQ dinner</div>
+          <div class="act-desc">Walk 10 minutes from Gwangjang to this 1920s hanok village where old Korean homes have been converted into makgeolli bars, craft beer spots, and upscale restaurants. Explore the alleys, pick a BBQ restaurant on the famous Gogi Street (BBQ alley), and grill samgyeopsal (pork belly) or galbi (beef short ribs) at the table. Order soju + beer (somaek), wrap the meat in perilla leaves with gochujang, and enjoy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-seoul)">Day 3</div>
+      <div class="day-info">
+        <div class="day-title">Bukhansan Hike + N Seoul Tower Sunset</div>
+        <div class="day-tags"><span class="tag t-nature">nature</span><span class="tag t-active">active</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="section-label">Full Day — Choose Your Level</div>
+      <div class="options-block">
+        <div class="options-title">Bukhansan trails — pick your challenge</div>
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Hard (6 hours)</div>
+            <div class="option-name">Baegundae Peak (836m)</div>
+            <div class="option-desc">The summit of Bukhansan. Granite slab scramble at the top with ropes. Unobstructed 360° city views. Take Line 3 → Gupabal, then Bus 704/8772 to trailhead. Start by 8am. 3.4km one way, very steep finale.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Moderate (4–5 hours)</div>
+            <div class="option-name">Dobongsan</div>
+            <div class="option-desc">The dramatic, rugged side of the park — sharp granite peaks and ridge walks. Slightly tougher terrain than Baegundae but fewer tourists. Direct subway to Dobongsan Station Line 1/7. Restaurants at the trailhead serve traditional mountain food after the hike.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Easy (2–3 hours)</div>
+            <div class="option-name">Inwangsan + Fortress Wall</div>
+            <div class="option-desc">The best quick city-view hike in Seoul. Follows the old Seoul Fortress Wall with panoramic views over Gyeongbokgung, Namsan Tower, and the Han River. Cultural sites including a shamanic village (Guksadang). Begins near Gyeongbokgung — accessible and rewarding.</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Post-hike</div>
+        <div class="act-main">
+          <div class="act-name">Mountain makgeolli culture at the trailhead</div>
+          <div class="act-desc">This is a sacred Korean ritual. After any mountain hike, stop at the cluster of restaurants at the trailhead and order pajeon (green onion pancake) and a bowl of cold makgeolli. The combination of crispy savoury pancake and fizzy, slightly tangy rice wine after a big hike is one of the best experiences Korea offers. Hikers from age 6 to 86 do this every weekend.</div>
+          <div class="act-tip">At Dobongsan trailhead, look for restaurants serving dotori-muk (acorn jelly) and deodeokgui (grilled deodeok root) — mountain foods almost impossible to find elsewhere in Seoul.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Sunset</div>
+        <div class="act-main">
+          <div class="act-name">N Seoul Tower (Namsan Mountain)</div>
+          <div class="act-desc">Walk the Namsan circuit trail (50 min easy loop) or take the cable car up from Myeongdong. The tower has an observatory, multiple restaurants, and the famous love-lock fence — add yours like every K-drama protagonist. Best visited 30–60 minutes before sunset when the sky changes and the city lights begin. The tower itself lights up at dark.</div>
+          <div class="act-tip">The Namsan cable car queues can be long on weekends. Walk up instead — it's only 20–30 minutes along a pleasant forested path.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-seoul)">Day 4</div>
+      <div class="day-info">
+        <div class="day-title">Seongsu "Brooklyn of Seoul" + Gangnam + Drinking Night</div>
+        <div class="day-tags"><span class="tag t-shop">shopping</span><span class="tag t-food">food</span><span class="tag t-night">nightlife</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="section-label">Morning</div>
+      <div class="activity">
+        <div class="act-time">10am–1pm</div>
+        <div class="act-main">
+          <div class="act-name">Seongsu-dong</div>
+          <div class="act-desc">Seoul's Brooklyn — former shoe factories turned into the city's most creative neighbourhood. Pop-up stores (new ones appear weekly), concept cafés, independent boutiques, photography studios, and the city's best specialty coffee. Key stops: Cafe de Laon (brunch), Seoul Brewery Seongsu taproom (industrial chic, 20+ house beers), Amazing Brewing Co (beer garden, experimental brews), and the massive new Olive Young flagship. Walk along the Seoul Forest for nature between café-hopping.</div>
+          <div class="act-tip">Gentle Monster's flagship store here is a full art installation — worth walking through even if you don't buy anything.</div>
+        </div>
+      </div>
+      <div class="section-label">Afternoon</div>
+      <div class="activity">
+        <div class="act-time">2–6pm</div>
+        <div class="act-main">
+          <div class="act-name">Gangnam + Bongeunsa Temple + COEX Starfield</div>
+          <div class="act-desc">Take Line 2 to Gangnam. Visit Bongeunsa Temple — a 1,200-year-old Buddhist temple impossibly surrounded by glass skyscrapers. Completely free, surprisingly peaceful. Then explore COEX Mall, home to the spectacular Starfield Library — a cathedral of books with floor-to-ceiling shelves that's as much an art installation as a library. Browse, photograph, and sit in one of the reading chairs under the towers of books.</div>
+        </div>
+      </div>
+      <div class="section-label">Evening — Korean Drinking Culture</div>
+      <div class="options-block">
+        <div class="options-title">Choose your drinking culture experience tonight</div>
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Traditional Korea</div>
+            <div class="option-name">Makgeolli + Sool Bars</div>
+            <div class="option-desc"><strong>Sanullim 1992</strong> (Hongdae) — jumak-style traditional tavern, extensive makgeolli list, incredible spicy octopus somyeon. Walk-in only, expect a wait.<br><strong>Namsan Sool Club</strong> (Itaewon) — premium Korean spirits: soju, takju, yakju varieties. Friendly English-speaking staff.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Craft Beer Seoul</div>
+            <div class="option-name">Euljiro "Hipjiro" Crawl</div>
+            <div class="option-desc">One of the most atmospheric bar zones in Seoul. Hidden in former print-shop alleys: <strong>Euljiro Brewing</strong> (loud, neon, great IPAs + sourdough pizza), <strong>Artmonster</strong> (retro Hong Kong cinema aesthetic, self-pour wristband system), and the Nogari Fish Dried Alley for pojangmacha vibes with beer.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Classic Local Night</div>
+            <div class="option-name">Korean BBQ + Pojangmacha</div>
+            <div class="option-desc">Head to Mapo-gu (near Hongdae) for the best local BBQ streets. Start with galbi or samgyeopsal. Move to a pojangmacha tent for fried snacks and soju. End at a chimaek (fried chicken + beer) restaurant for one final round — BHC Chicken near Myeongdong is legendary.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-seoul)">Day 5</div>
+      <div class="day-info">
+        <div class="day-title">DMZ Day Trip · OR · Slow Seoul Day</div>
+        <div class="day-tags"><span class="tag t-culture">culture</span><span class="tag t-shop">shopping</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="options-block" style="padding-top:14px;">
+        <div class="options-title">Choose your Day 5</div>
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Full Day — Book Ahead</div>
+            <div class="option-name">DMZ + JSA Tour</div>
+            <div class="option-desc">The Korean Demilitarized Zone is one of the most unique experiences in the world. Half-day or full-day guided tours from central Seoul visit the Joint Security Area (Panmunjom), the 3rd Infiltration Tunnel (dug by North Korea), Dora Observatory (overlooking North Korea), and Dorasan Station (the last train stop south of the border). Deeply sobering and fascinating — the most militarised border on earth.</div>
+            <div class="option-desc" style="margin-top:6px"><em>Book through Viator, KKday or a local operator. Most tours depart 8am from Gwanghwamun or Myeongdong. A passport is required. Book at least 48 hours in advance.</em></div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Relaxed Seoul Day</div>
+            <div class="option-name">Markets + Neighbourhoods</div>
+            <div class="option-desc"><strong>Morning:</strong> Cheonggyecheon Stream walk (urban stream beneath the city — the walk between market areas is lovely).<br><strong>Afternoon:</strong> Dongdaemun Design Plaza (DDP) — the futuristic building by Zaha Hadid hosts design exhibitions and surrounds a moat-like plaza.<br><strong>Late PM:</strong> Myeongdong K-beauty haul — Olive Young Global (12-floor), 12-storey Daiso, HBAF almond stores, duty-free shopping at Lotte.</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Hangang River Picnic + Sunset</div>
+          <div class="act-desc">End the Seoul leg the local way: buy fried chicken and a bottle of Cass beer from a convenience store, rent a bike from one of the stations on the riverbank, and cycle along the Han River to find a grassy spot by the water. This is what every Seoulite does in good weather. The Yeouido stretch has great facilities and views of the bridges.</div>
+          <div class="act-tip">The Rainbow Bridge (Banpo Bridge) has a fountain light show from its spans at night. Good viewing spot is just east of the bridge.</div>
+        </div>
+      </div>
+      <div class="food-block">
+        <div class="food-block-title">Seoul Food Must-Try List</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Samgyetang</strong> <span>— ginseng chicken soup, Tosokchon near Gyeongbokgung</span></div>
+          <div class="food-item"><strong>Sundubu jjigae</strong> <span>— silky soft tofu stew, spicy version with seafood</span></div>
+          <div class="food-item"><strong>Kimchi jjigae</strong> <span>— fermented kimchi stew with pork/tofu</span></div>
+          <div class="food-item"><strong>Ganjang gejang</strong> <span>— raw soy-marinated crab, extremely addictive</span></div>
+          <div class="food-item"><strong>Naengmyeon</strong> <span>— cold buckwheat noodles in chilled broth</span></div>
+          <div class="food-item"><strong>Salt bread (sogeum ppang)</strong> <span>— Seoul's viral bakery obsession</span></div>
+          <div class="food-item"><strong>Hanjeongsik</strong> <span>— multi-course Korean table covering every inch</span></div>
+          <div class="food-item"><strong>Dak galbi</strong> <span>— spicy stir-fried chicken with cheese pull</span></div>
+        </div>
+        <div class="restaurant-rec">
+          <div class="rest-label">Specific restaurant recs:</div>
+          <div class="rest-item"><strong>Tosokchon</strong> — Seoul's most famous samgyetang since 1983, near Gyeongbokgung</div>
+          <div class="rest-item"><strong>Myeongdong Kyoja</strong> — Michelin Bib Gourmand kalguksu + dumplings, Myeongdong</div>
+          <div class="rest-item"><strong>Born & Bred</strong> — premium Hanwoo beef courses, Majang Meat Market area</div>
+          <div class="rest-item"><strong>Hwanggeum Mokjang</strong> — expensive but exceptional Korean BBQ, Myeongdong</div>
+          <div class="rest-item"><strong>Gwangjang Market stall 11</strong> — best hot stone bibimbap in Seoul</div>
+        </div>
+      </div>
+      <div class="drink-block">
+        <div class="drink-block-title">Seoul Drinks to Try</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Makgeolli</strong> <span>— milky, fizzy rice wine. Best paired with bindaetteok or pajeon</span></div>
+          <div class="food-item"><strong>Soju</strong> <span>— Korea's national spirit; try Chamisul (classic) or Jinro Grapefruit</span></div>
+          <div class="food-item"><strong>Somaek</strong> <span>— soju bomb in beer. Classic 3:7 ratio</span></div>
+          <div class="food-item"><strong>Korean craft beer</strong> <span>— Amazing Brewing Co, Seoul Brewery, Magpie, Euljiro Brewing</span></div>
+          <div class="food-item"><strong>Sikhye</strong> <span>— sweet, cloudy fermented rice punch. Order at jjimjilbang</span></div>
+          <div class="food-item"><strong>Korean café culture</strong> <span>— world-class specialty coffee; Anthracite, Fritz, Felt Coffee</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= BUSAN ======================= -->
+<div id="leg-b" class="leg">
+  <div class="leg-intro">
+    <div class="subtitle">Leg 2 · 4 Nights</div>
+    <h2>Busan</h2>
+    <p>Korea's coastal soul — a city where mountains collapse into the sea, where refugees built rainbow villages on cliff sides, where the largest fish market in Korea operates 24 hours, and where the cold noodles taste different from anywhere else in the country. Busan balances city energy with genuine coastal calm. Stay near Gwangalli or Haeundae beach for the best access — the Busan subway connects the main areas easily.</p>
+    <div class="stay-options">
+      <div class="stay-card"><strong>Luxury</strong>Park Hyatt Busan — Haeundae, panoramic ocean views</div>
+      <div class="stay-card"><strong>Boutique</strong>After Chapter Hotel Gwanganri — design hotel, Gwangalli vibes</div>
+      <div class="stay-card"><strong>Value</strong>Asti Hotel — 5 min walk from Busan Station, clean and convenient</div>
+      <div class="stay-card"><strong>Budget</strong>Guesthouses in Gamcheon area — charming neighbourhood stays</div>
+    </div>
+  </div>
+
+  <!-- BUSAN DAY 1 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-busan)">Day 1</div>
+      <div class="day-info">
+        <div class="day-title">Arrival + Gamcheon Village + Gwangalli Beach</div>
+        <div class="day-tags"><span class="tag t-culture">culture</span><span class="tag t-food">food</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Travel</div>
+        <div class="act-main">
+          <div class="act-name">Seoul → Busan by KTX</div>
+          <div class="act-desc">The KTX high-speed train is the best way to travel. 2 hours 15 minutes from Seoul Station to Busan Station. Book at least a few days ahead at Korail.go.kr or on the Korail app. Trains run frequently and the ride is comfortable. A luxury express bus (4 hours) also runs if you want to save money — has lie-flat seats.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Gamcheon Culture Village</div>
+          <div class="act-desc">Busan's most iconic sight — a Korean War refugee camp that transformed into an extraordinary hillside art district, with narrow alleys, pastel houses, wall murals, tiny galleries, and indie cafés cascading down the hillside to the sea. Wander freely — you don't need a map, getting lost is the point. The Avant Garde Café at the top has the best elevated panorama over the whole village.</div>
+          <div class="act-tip">Go on a weekday afternoon (3–5pm) when tour groups thin out. The village becomes genuinely atmospheric at dusk when residents come home and the alleys quiet down.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Gwangalli Beach + Drone Light Show</div>
+          <div class="act-desc">Busan's coolest beach — local, laid-back, with spectacular views of the illuminated Gwangan Bridge. The promenade has brilliant cafés and seafood restaurants with direct beach views. Every Saturday evening there's a free synchronized drone light show over the water. Walk the full beach and pick a spot for dinner.</div>
+        </div>
+      </div>
+      <div class="food-block">
+        <div class="food-block-title">First Busan meal tonight</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Eonyang Bulgogi Busanjip</strong> <span>— Michelin-listed, marinated Korean BBQ near Gwangalli</span></div>
+          <div class="food-item"><strong>Gwangalli seafood restaurants</strong> <span>— fresh hoe (raw fish) with Gwangan Bridge views</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSAN DAY 2 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-busan)">Day 2</div>
+      <div class="day-info">
+        <div class="day-title">Sea Temples + Haeundae + Blueline Park</div>
+        <div class="day-tags"><span class="tag t-culture">culture</span><span class="tag t-nature">nature</span><span class="tag t-active">active</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">7–9am</div>
+        <div class="act-main">
+          <div class="act-name">Haedong Yonggungsa Temple</div>
+          <div class="act-desc">One of the most extraordinary temples in Korea — built in 1376 directly on coastal cliffs above the crashing East Sea. Stone lanterns, Buddha statues, and pagodas on the rock platforms with waves breaking below. Magnificent at low tide when you can walk the shoreline around the base. Visit before 9am to avoid the tour buses completely.</div>
+          <div class="act-tip">Nearby eateries serve simple vegetarian bibimbap after the temple visit — perfect morning meal with ocean views.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Mid-morning</div>
+        <div class="act-main">
+          <div class="act-name">Seokbulsa or Beomeosa Temple</div>
+          <div class="act-desc"><strong>Seokbulsa</strong> — hidden cliff temple with giant Buddhas carved directly into the rock face. Almost no tourists even know this exists. The approach through a narrow valley past waterfalls is extraordinary.<br><br><strong>Beomeosa</strong> — a sprawling 1,300-year-old mountain temple in pine forest. You can hike from here up to Geumjeongsan Fortress for panoramic city views. Temple stay programs available for overnight cultural immersion.</div>
+          <div class="act-warn">Seokbulsa: take Subway Line 1 to Beomeo Station, then taxi. Beomeosa: take Line 1 to Beomneosa Station and walk 30 mins or take Bus 90.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Haeundae Beach + Blueline Sky Capsule</div>
+          <div class="act-desc">Korea's most famous beach — 1.5km of white sand with facilities, restaurants, and a promenade. Ride the Haeundae Blueline Park Sky Capsule — colourful glass pods on a coastal rail track running from Mipo to Songjeong with breathtaking ocean views. The ride takes about 30 minutes each way. Also worth: walking around Dongbaekseom Island's coastal trail (free, peaceful, with sea views).</div>
+          <div class="act-warn">Book Sky Capsule tickets online 1–2 weeks ahead — they sell out, especially weekends.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Bay 101 + Night Views</div>
+          <div class="act-desc">Bay 101 yacht club at Haeundae has free entry and one of the best views of Busan's lit-up skyline at night. Browse the marina, get a drink at the bar, and watch the city reflect in the water. Dinner at Nasari Restaurant near Gwangalli for ocean views with Korean food.</div>
+        </div>
+      </div>
+      <div class="food-block">
+        <div class="food-block-title">Busan Day 2 Food</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Dwaeji gukbap</strong> <span>— pork rice soup, Busan's essential breakfast. Try Geukdong Dwaeji Gukbap near Haeundae</span></div>
+          <div class="food-item"><strong>Milmyeon</strong> <span>— cold wheat noodles, Busan's answer to naengmyeon. Try Haeundae Gaya Milmyeon</span></div>
+          <div class="food-item"><strong>Ssiat hotteok</strong> <span>— seed-filled sweet pancake at BIFF Square, the best street dessert in Busan</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSAN DAY 3 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-busan)">Day 3</div>
+      <div class="day-info">
+        <div class="day-title">Jagalchi Fish Market + Taejongdae + Coastal Walks</div>
+        <div class="day-tags"><span class="tag t-food">food</span><span class="tag t-nature">nature</span><span class="tag t-active">active</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Morning</div>
+        <div class="act-main">
+          <div class="act-name">Jagalchi Fish Market + Nampo-dong</div>
+          <div class="act-desc">Korea's largest seafood market, run almost entirely by women called "Jagalchi ajumma." A riot of colour, noise, and overwhelming fresh sea smell — live octopus, giant king crabs, haenyeo-caught abalone, sea cucumber. Buy fresh seafood on the ground floor and take it to the restaurants upstairs to have it prepared.<br><br>Walk to nearby Nampo-dong for BIFF Square (film festival hub with great street food), Bosu Book Street (vintage books, stationery, quiet atmosphere), and Bupyeong Kkangtong Market (night market come alive after 7pm).</div>
+          <div class="act-tip">Get the yukhoe (raw beef tartare) and hoe (fresh sliced fish) combination. Budget ₩30,000–50,000 for a proper seafood spread upstairs with soju.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Choose your coast:</div>
+        </div>
+      </div>
+      <div class="options-block">
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Dramatic Cliffs</div>
+            <div class="option-name">Taejongdae Resort Park</div>
+            <div class="option-desc">The southern tip of Yeongdo Island — dramatic coastal bluffs, lighthouse views, crashing waves, hidden temples, and a small zipline. Walk the coastal trail (90 min loop) or take the Danubi miniature forest train if you'd rather not hike. Genuinely spectacular.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Skywalk + Cable Car</div>
+            <div class="option-name">Songdo Beach</div>
+            <div class="option-desc">The Songdo Cloud Trail is a swirling glass-floored walkway over the sea. The Busan Air Cruise (Songdo Cable Car, now with glass-bottom cars) crosses the bay to Amnam Park. Less crowded than Haeundae. Excellent for photos.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Hidden Coastal Village</div>
+            <div class="option-name">Huinnyeoul Culture Village + Jeoryeong Trail</div>
+            <div class="option-desc">Often called the "Santorini of Busan" for its blue-and-white painted buildings. Walk the Jeoryeong Coastal Walk (part of the 35km trail) for sea cliff views. Find the colourful piano stairs. Very few tourists compared to Gamcheon.</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Seomyeon for food and nightlife</div>
+          <div class="act-desc">Busan's most local dining and drinking zone — university students, office workers, and locals who haven't yet moved to Seoul. Food alley near Seomyeon Station has brilliant dakgalbi (spicy stir-fried chicken with stretchy mozzarella), pojangmacha tents, and late-night tteokbokki. Great for cheap street food followed by a wander through the underground shopping arcade.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSAN DAY 4 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-busan)">Day 4</div>
+      <div class="day-info">
+        <div class="day-title">Ahopsan Forest + Mountain Hike + Heosimcheong Spa</div>
+        <div class="day-tags"><span class="tag t-nature">nature</span><span class="tag t-active">active</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Morning</div>
+        <div class="act-main">
+          <div class="act-name">Ahopsan Forest (Bamboo Forest)</div>
+          <div class="act-desc">A breathtaking bamboo grove in the mountains west of Busan, famously featured in historical K-dramas. Walking through the tall bamboo columns is hushed, green, and otherworldly — an almost Japanese aesthetic in the middle of Korea. Free entry. Best in morning light when shafts filter through.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Mid-morning</div>
+        <div class="act-main">
+          <div class="act-name">Geumjeongsan Fortress Hike</div>
+          <div class="act-desc">A well-maintained forested mountain trail leading up to ancient stone fortress walls and sweeping views over Busan and the sea. You can take a cable car (₩9,000 return) part-way and hike from there. One of the best city-to-mountain views in Korea. Very popular with Korean hikers — expect grandmas overtaking you.</div>
+          <div class="act-tip">From the fortress walls, look for the famous Geumjeong Mountain Fortress North Gate (Bukhammun) — it's almost completely intact and makes for dramatic photos.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Heosimcheong Spa (Spa Land)</div>
+          <div class="act-desc">Busan's legendary jjimjilbang (Korean spa). Multiple floors of natural hot spring pools, themed sauna rooms (charcoal, Himalayan salt, infrared, jade), scrub treatment rooms, sleeping areas, and a food court serving kimchi jjigae and sikhye. Entry includes towel, locker, and spa clothes. Widely considered one of the best in Korea. Sink in, and don't leave for several hours.</div>
+          <div class="act-tip">The Italian salt sauna room is a highlight — walls entirely covered in pink Himalayan salt crystals. The open-air rooftop pool (if weather allows) with city views is another standout.</div>
+        </div>
+      </div>
+      <div class="food-block">
+        <div class="food-block-title">Complete Busan Food List — don't leave without trying:</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Eomuk (fish cake)</strong> <span>— on skewers in warm broth from street stalls. Free broth refills</span></div>
+          <div class="food-item"><strong>Ssiat hotteok</strong> <span>— BIFF Square. The seed-packed version unique to Busan</span></div>
+          <div class="food-item"><strong>Milmyeon</strong> <span>— cold wheat noodles. Choryang Milmyeon or Gukjae Milmyeon near Seomyeon</span></div>
+          <div class="food-item"><strong>Dwaeji gukbap</strong> <span>— pork rice soup. Ssangdoongi near Seomyeon or Geukdong near Haeundae</span></div>
+          <div class="food-item"><strong>Fresh hoe</strong> <span>— raw sliced fish at Millak Raw Fish Town (10-storey Hoe building at Gwangalli)</span></div>
+          <div class="food-item"><strong>Grilled clams at Cheongsapo</strong> <span>— grill your own at the table with cold soju, ocean view</span></div>
+          <div class="food-item"><strong>Dongnae Pajeon</strong> <span>— 4-generation-old rice flour seafood pancake at Dongnae Halmae Pajeon</span></div>
+          <div class="food-item"><strong>Hanwoo beef</strong> <span>— try at a Korean BBQ restaurant in Haeundae for premium cuts</span></div>
+        </div>
+        <div class="restaurant-rec">
+          <div class="rest-label">Cooking class recommendation:</div>
+          <div class="rest-item"><strong>Bapsang with Min</strong> — Busan's most-recommended cooking class. Bibimbap, haemul pajeon, miyeok guk. You'll leave with recipes you actually use.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= JEJU ======================= -->
+<div id="leg-j" class="leg">
+  <div class="leg-intro">
+    <div class="subtitle">Leg 3 · 4 Nights</div>
+    <h2>Jeju Island — Seogwipo</h2>
+    <p>Jeju is a different country within Korea — a volcanic island with a distinct dialect, food culture, mythology, and landscape. The south coast around Seogwipo is where the best of Jeju concentrates: waterfalls, coastal walks, the best beaches, and the most dramatic natural sights. <strong>Rent a car at the airport</strong> — Jeju's attractions are spread across the island and buses, while they exist, are too slow and infrequent for efficient exploration. A rental car transforms the trip.</p>
+    <div class="stay-options">
+      <div class="stay-card"><strong>Scenic cliffs</strong>Casaloma Hotel Seogwipo — rooftop pool, ocean views</div>
+      <div class="stay-card"><strong>Beach</strong>Hotel Yeon Seogwipo — on the water, stunning sunrise</div>
+      <div class="stay-card"><strong>Value</strong>Park Sunshine Hotel Jeju — near Seogwipo, great reviews</div>
+      <div class="stay-card"><strong>Unique</strong>Airbnb in a Jeju stone-wall village farmhouse</div>
+    </div>
+  </div>
+
+  <!-- JEJU DAY 1 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-jeju)">Day 1</div>
+      <div class="day-info">
+        <div class="day-title">Arrival + South Coast + Jeju Black Pork BBQ</div>
+        <div class="day-tags"><span class="tag t-nature">nature</span><span class="tag t-food">food</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Travel</div>
+        <div class="act-main">
+          <div class="act-name">Busan → Jeju domestic flight</div>
+          <div class="act-desc">~55 minutes from Gimhae Airport (PUS) to Jeju International (CJU). Book with Jeju Air, Air Busan, or Korean Air. Collect rental car at the airport immediately — this is your vehicle for the whole Jeju stay. Head south on Route 1100 towards Seogwipo.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Jusangjeolli Lava Cliffs</div>
+          <div class="act-desc">One of Jeju's most dramatic natural sights: perfect hexagonal basalt columns formed by Hallasan's lava meeting the sea — like the Giant's Causeway, but Korean. Right on the south coast. The viewing boardwalk takes 20–30 minutes and the light is excellent in afternoon. Free.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Late Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Cheonjiyeon Waterfall + Oedolgae Rock</div>
+          <div class="act-desc"><strong>Cheonjiyeon Waterfall</strong> — three-tiered waterfall cascading through subtropical forest into a turquoise pool. The boardwalk approach is beautiful. Said to have healing properties.<br><br><strong>Oedolgae Rock</strong> — a dramatic 20-metre volcanic monolith rising alone from the sea, visible from a clifftop viewpoint with a short coastal trail. Featured in multiple K-dramas.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Jeju Black Pork BBQ</div>
+          <div class="act-desc">Black pigs (heukdwaeji) are raised on a diet that includes barley and fermented food, giving the pork a richer, more complex flavour than mainland pork. The restaurants here wrap your jacket in a plastic bag before the grilling starts — so it doesn't smell of smoke. This is the definitive Jeju meal. Pork belly and neck cuts at the table, grilled by the staff, wrapped in perilla leaves.</div>
+          <div class="act-tip">Best with Jeju hallabong soju (citrus-flavoured, lighter than mainland) or local Hallasan makgeolli. The black pork street near Jeju City airport area has dozens of competing restaurants — in Seogwipo, try Heukdwaeji Sikdang.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JEJU DAY 2 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-jeju)">Day 2</div>
+      <div class="day-info">
+        <div class="day-title">Hallasan National Park — Korea's Highest Summit</div>
+        <div class="day-tags"><span class="tag t-nature">nature</span><span class="tag t-active">active</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="options-block" style="padding-top:14px;">
+        <div class="options-title">Choose your Hallasan experience</div>
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Full Summit — all day</div>
+            <div class="option-name">Seongpanak Trail (summit)</div>
+            <div class="option-desc">9.6km one way, 7–9 hours round trip. Through volcanic landscapes, ancient forest, and open crater views to the summit lake. The most popular summit trail. Start absolutely by 7am — there is a strict cutoff time at the summit. Reserve permits in advance at <strong>visithalla.jeju.go.kr</strong>.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Moderate — 5–6 hours</div>
+            <div class="option-name">Gwaneumsa Trail (crater views)</div>
+            <div class="option-desc">The most dramatic trail on Hallasan — passes through deep valleys, ancient forest, and opens up to the crater rim. Recommended as a descent route if you summit via Seongpanak. Tougher terrain but more beautiful scenery.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Easy — 2–3 hours, no summit</div>
+            <div class="option-name">1100 Altitude Road Drive</div>
+            <div class="option-desc">Drive the highest road in Korea (1,100m elevation) which passes right below Hallasan's crater. Multiple rest stops, wetland boardwalks, and viewpoints with no hiking required. Follow with the Seogwipo Natural Recreational Forest for an easy 1-hour walk through conifer forest.</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Seogwipo Maeil Olle Market + Recovery dinner</div>
+          <div class="act-desc">Jeju's best local market — abalone, tangerines, fresh seafood, black pork, and island specialties. After a Hallasan day, order abalone porridge (jeonbok juk): creamy, green, oceanic, and deeply restorative. The market is small enough to do in 30 minutes but its food quality is excellent.</div>
+        </div>
+      </div>
+      <div class="act-warn" style="margin: 0 20px 14px;">Reserve Hallasan summit permits online before your trip — summit slots are capped and fill weeks ahead in spring and autumn.</div>
+    </div>
+  </div>
+
+  <!-- JEJU DAY 3 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-jeju)">Day 3</div>
+      <div class="day-info">
+        <div class="day-title">East Coast — Sunrise Peak + Seopjikoji + Udo Island Option</div>
+        <div class="day-tags"><span class="tag t-nature">nature</span><span class="tag t-culture">culture</span><span class="tag t-active">active</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Early AM (5:30am)</div>
+        <div class="act-main">
+          <div class="act-name">Seongsan Ilchulbong — Sunrise Peak</div>
+          <div class="act-desc">A UNESCO World Heritage tuff cone formed by a single volcanic eruption. The 30-minute hike to the crater rim is easy and family-friendly. At the top: a panoramic view of the crater bowl, ocean, and Udo Island. In the morning, the light is extraordinary. At the base after descending, watch the haenyeo (female free divers) bring up their catch from the sea — one of the most distinctive cultural experiences in all of Korea.</div>
+          <div class="act-tip">Arrive by 7am to beat tour groups. The haenyeo demonstrations usually happen between 9–11am at the base near the water.</div>
+        </div>
+      </div>
+      <div class="options-block">
+        <div class="options-title">Mid-morning — choose your east coast activity</div>
+        <div class="option-cards">
+          <div class="option-card">
+            <div class="option-label">Island Day Trip</div>
+            <div class="option-name">Udo Island by Electric Bike</div>
+            <div class="option-desc">A tiny island off the eastern tip of Jeju — take the 15-minute ferry from Seongsan Port and rent an electric bike to circle the island (1 hour loop). Peanut ice cream, blue-green beaches, haenyeo diving offshore, cliffside lighthouse, a single mountain peak with views of Seongsan. One of the most peaceful half-days in Korea.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Coastal Walk</div>
+            <div class="option-name">Seopjikoji Cape</div>
+            <div class="option-desc">A dramatic wind-swept headland with pampas grass fields, volcanic rock, and sea views. Featured in Korean films and GD's famous café. Easy 1-hour circuit trail to the lighthouse tip. Several cliffside cafés with extraordinary views. Peaceful even when crowds are elsewhere.</div>
+          </div>
+          <div class="option-card">
+            <div class="option-label">Olle Trail Walk</div>
+            <div class="option-name">Jeju Olle Route 1</div>
+            <div class="option-desc">A section of the 437km walking trail that circles all of Jeju. Route 1 runs along the east coast through fishing villages, old stone walls, barley fields, and coastal paths. The "ganse" horse mascot at trail posts reminds you to slow down. Download the Naver Hiking map beforehand.</div>
+          </div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Jeongbang Waterfall</div>
+          <div class="act-desc">One of Asia's only waterfalls that falls directly into the ocean — 23 metres of water cascading off basalt cliffs straight into the sea. A short clifftop path leads to the viewing platform where you feel the spray. Very dramatic and relatively uncrowded in the afternoon.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Lee Jung Seop Street, Seogwipo</div>
+          <div class="act-desc">Named after a beloved Korean artist who lived in Seogwipo, this lively street has artisan shops, galleries, bars, and cafés. Good for an evening wander with local craft beer, followed by a bowl of haemul jeongol (spicy seafood hotpot) for dinner.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JEJU DAY 4 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-jeju)">Day 4</div>
+      <div class="day-info">
+        <div class="day-title">West Coast — Tea Fields + Green Sea + Folk Village</div>
+        <div class="day-tags"><span class="tag t-nature">nature</span><span class="tag t-culture">culture</span><span class="tag t-food">food</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Morning</div>
+        <div class="act-main">
+          <div class="act-name">O'Sulloc Tea Museum + Innisfree Jeju House</div>
+          <div class="act-desc">Drive to the west coast and the rolling green tea fields. O'Sulloc Tea Museum is surrounded by manicured rows of tea plants — the tea café serves excellent matcha lattes, green tea ice cream, and seasonal teas. Walk through the fields before they open to crowds. Next door, Innisfree's eco-flagship has DIY cosmetics workshops, tea-tasting, and Jeju ingredient-based skincare all in a beautiful woodland setting.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Midday</div>
+        <div class="act-main">
+          <div class="act-name">Hyeopjae Beach</div>
+          <div class="act-desc">One of Korea's most beautiful beaches — turquoise-blue water over white sand with Hallasan visible in the background. The combination of the blue water and the mountain silhouette is iconic Jeju. Relatively uncrowded by Korean standards. Nearby Hallim Park has tropical botanical gardens and two accessible lava tube caves.</div>
+          <div class="act-tip">Optional: take a short ferry from Hyeopjae to tiny Biyangdo Island for a very quiet, off-the-beaten-path half day with virtually no other tourists.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Jeju Folk Village Museum</div>
+          <div class="act-desc">40 acres of authentically reconstructed 19th-century Jeju — thatched-roof stone houses, blacksmith workshops, government offices, traditional fishing villages, and a haenyeo demonstration area. Folk performances during the day. One of the best open-air museums in Korea and genuinely not touristy.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening option</div>
+        <div class="act-main">
+          <div class="act-name">Makgeolli Brewing Class</div>
+          <div class="act-desc">Learn to brew Jeju's traditional makgeolli in a hands-on class, taste 6 premium rice wines, and pair with kimchi pancake (kimchijeon). You take your bottle home as a souvenir. A genuinely fun and tasty 2-hour experience — bookable through Klook or Airbnb Experiences.</div>
+        </div>
+      </div>
+      <div class="food-block">
+        <div class="food-block-title">Complete Jeju Food Guide</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Heukdwaeji (Black Pork BBQ)</strong> <span>— Jeju's signature dish. Do not skip</span></div>
+          <div class="food-item"><strong>Jeonbok juk</strong> <span>— abalone porridge. Green, creamy, oceanic. The recovery food</span></div>
+          <div class="food-item"><strong>Haemul jeongol</strong> <span>— spicy seafood hotpot with local catch</span></div>
+          <div class="food-item"><strong>Hallabong</strong> <span>— Jeju's famous sweet tangerine. In season Nov–Mar</span></div>
+          <div class="food-item"><strong>Matcha everything</strong> <span>— O'Sulloc teas, green tea ice cream, matcha lattes</span></div>
+          <div class="food-item"><strong>Grilled mackerel</strong> <span>— godeungeo-gui at any coastal restaurant</span></div>
+          <div class="food-item"><strong>Jeju seafood ramen</strong> <span>— a warming broth with fresh island seafood</span></div>
+          <div class="food-item"><strong>Udo peanut ice cream</strong> <span>— the island's famous souvenir dessert</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= HONGDAE ======================= -->
+<div id="leg-h" class="leg">
+  <div class="leg-intro">
+    <div class="subtitle">Leg 4 · 3 Nights</div>
+    <h2>Seoul — Hongdae</h2>
+    <p>Seoul's second act, from a completely different base. Hongdae is Seoul at its most electric — university students, street performers, indie musicians, photographers, and a nightlife scene that doesn't stop. Named after Hongik University (Korea's top art school), the neighbourhood still carries that creative DNA even as major brands have moved in. It's also where Seoul's airport express drops you — 43 minutes to Incheon, perfect for departure. Use these 3 nights to explore the neighbourhoods you missed first time, go deeper on the food and drink culture, and experience the city after dark properly.</p>
+    <div class="stay-options">
+      <div class="stay-card"><strong>Boutique luxury</strong>RYSE Autograph Collection — coolest hotel in Hongdae, Side Note rooftop bar</div>
+      <div class="stay-card"><strong>Style + value</strong>L7 Hongdae by Lotte — great rooftop, well-located</div>
+      <div class="stay-card"><strong>Mid-range</strong>Amanti Hotel Seoul — rooftop pool in summer</div>
+      <div class="stay-card"><strong>Budget</strong>BB Hongdae Hostel — social, well-reviewed</div>
+    </div>
+  </div>
+
+  <!-- HONG DAY 1 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-hong)">Day 1</div>
+      <div class="day-info">
+        <div class="day-title">Arrival + Hongdae Explore + Night Out</div>
+        <div class="day-tags"><span class="tag t-night">nightlife</span><span class="tag t-food">food</span><span class="tag t-shop">shopping</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Gyeongui Line Forest Park</div>
+          <div class="act-desc">A former railway line transformed into a linear park threading through Hongdae — great for a first afternoon orientation walk. Indie boutiques, vintage shops, photo booths, and art installations line the path. Street performers set up in the late afternoon. The park connects through Sangsu to Gongdeok and covers about 6km.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Late afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Hongdae Shopping + Street Culture</div>
+          <div class="act-desc">The area around exit 9 of Hongik University Station is the commercial core — Nike Hongdae flagship, M Playground (affordable K-fashion across multiple floors), Gentle Monster (eyewear as art), Olive Young, Musinsa (Korean streetwear). But the real Hongdae is 2–3 blocks off the main street in the alleys — vintage stores, local designers, ceramics, and one-of-a-kind pieces.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening (from 6pm)</div>
+        <div class="act-main">
+          <div class="act-name">Street performers + dinner + classic night out</div>
+          <div class="act-desc">From 6pm, the playground and main street fill with buskers and K-pop dance crews. Watch the performances, then dinner 2–3 blocks into the alleys (30% cheaper, much better quality than the tourist-facing street). Evening arc: Korean BBQ at a local spot → pojangmacha tent for soju snacks → Sanullim 1992 for traditional makgeolli and spicy octopus somyeon (walk-in only, expect a 20-min wait) → Hongdae club street for dancing (NB2 for old-school hip-hop, Club FF for indie/alternative).</div>
+          <div class="act-tip">Clubs are free or cheap before midnight on weekdays. Bring your passport (not a copy) — clubs check ID strictly. The subway stops around midnight so either stay near your hotel or budget for a taxi/KakaoTaxi home.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HONG DAY 2 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-hong)">Day 2</div>
+      <div class="day-info">
+        <div class="day-title">Mangwon Market + Itaewon + Euljiro Bar Crawl</div>
+        <div class="day-tags"><span class="tag t-food">food</span><span class="tag t-night">nightlife</span><span class="tag t-culture">culture</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Morning</div>
+        <div class="act-main">
+          <div class="act-name">Mangwon Market + Han River</div>
+          <div class="act-desc">One subway stop from Hongdae. A beloved local traditional market almost entirely unvisited by tourists — ajummas selling kimchi dumplings, fresh noodles rolled out by hand, tteokbokki, fish cakes, and banchan. Less photogenic than Gwangjang but more genuinely Korean. Grab a spread of snacks, then walk 10 minutes to the Han River bank to eat by the water.</div>
+          <div class="act-tip">Rent a bike from the Han River Bicycle rental station (₩3,000/hour) and cycle east along the riverside. Stop at a convenience store for more snacks and settle on the grass.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Afternoon</div>
+        <div class="act-main">
+          <div class="act-name">Itaewon + Haebangchon</div>
+          <div class="act-desc">Itaewon has reinvented itself as Seoul's global food and design hub — multinational restaurants, Korean antique and vintage shopping on the side streets, and the Leeum Museum of Art (Samsung's private art collection — world-class, rotating exhibitions). Walk 15 minutes uphill to Haebangchon (HBC) for the best Namsan Tower views from street cafés, craft bars, and international restaurants with genuine character.</div>
+          <div class="act-tip">Namsan Sool Club in the Itaewon area — a premium Korean spirits bar — is the best place in Seoul to try sool (Korean alcohol varieties beyond basic soju). The bartenders know their craft and the English menu makes it accessible.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Evening</div>
+        <div class="act-main">
+          <div class="act-name">Euljiro "Hipjiro" Night</div>
+          <div class="act-desc">One of Seoul's most atmospheric night-out destinations — the former industrial printing district has been colonised by hidden bars, secret speakeasies, and eccentric craft spots in old hardware shops. The district rewards wandering: unmarked doors, rickety stairs to basement bars, neon signs in alleyways. Key stops: Euljiro Brewing (loud, sociable, excellent IPAs + pizza in the alley), Artmonster Euljiro (retro-neon, self-pour system), and the Nogari Dried Fish Alley (₩5,000 for beer + dried fish, incredibly atmospheric).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HONG DAY 3 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num" style="color:var(--accent-hong)">Day 3</div>
+      <div class="day-info">
+        <div class="day-title">Final Day — Jjimjilbang + Last Meal + Departure</div>
+        <div class="day-tags"><span class="tag t-food">food</span><span class="tag t-culture">culture</span></div>
+      </div>
+      <div class="chev">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="activity">
+        <div class="act-time">Morning</div>
+        <div class="act-main">
+          <div class="act-name">Dragon Hill Spa (Jjimjilbang)</div>
+          <div class="act-desc">One of Seoul's most famous jjimjilbang — a 7-floor complex near Yongsan with hot spring pools, gender-separated bathing areas, themed sauna rooms (charcoal, jade, salt), a rooftop terrace with city views, a food court, and sleeping areas. Open 24 hours. The perfect send-off: soak for 2–3 hours, eat jeongsik (set rice meal) in the food court, and decompress before the airport.</div>
+          <div class="act-tip">₩12,000–15,000 entry includes a towel, locker, and communal jjimjilbang clothes. The mugwort bath and the open-air tub on the rooftop are standouts.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Final Meal</div>
+        <div class="act-main">
+          <div class="act-name">Last Korean meal — samgyetang or ganjang gejang</div>
+          <div class="act-desc"><strong>Tosokchon</strong> (near Gyeongbokgung) for samgyetang — a whole young chicken stuffed with rice, ginseng, garlic, and jujube dates, simmered in broth. Warming, nourishing, and quintessentially Korean. Open since 1983. The queues move fast.<br><br><strong>Alternative:</strong> Ganjang gejang (raw soy-marinated crab) — known as "rice thief" because the sauce is so good you eat three bowls of rice. Order at Gamhongro or Dokkaebi near central Seoul.</div>
+        </div>
+      </div>
+      <div class="activity">
+        <div class="act-time">Airport</div>
+        <div class="act-main">
+          <div class="act-name">AREX City Check-in + Express to Incheon</div>
+          <div class="act-desc">If your flight is in the late afternoon or evening, use the Hongdae in-city check-in counter (A'REX City Check-in) at Hongik University Station to check your bags and get your boarding pass that morning. Then spend the rest of your time exploring without luggage. The AREX express train runs 43 minutes to Incheon.</div>
+          <div class="act-tip">The in-city check-in desk is open 5:20am–7pm and allows check-in up to 3 hours before your flight. Only certain airlines participate — check before you go.</div>
+        </div>
+      </div>
+      <div class="drink-block">
+        <div class="drink-block-title">Hongdae Drinks Worth Seeking Out</div>
+        <div class="food-grid">
+          <div class="food-item"><strong>Sanullim 1992</strong> <span>— best makgeolli bar in Seoul. Walk-in, always a wait. Worth it</span></div>
+          <div class="food-item"><strong>Seoul Brewery Hapjeong</strong> <span>— beautiful taproom, 2-min walk from Hongdae bars</span></div>
+          <div class="food-item"><strong>Euljiro Brewing (Hongdae branch)</strong> <span>— loud, fun, great beer + sourdough pizza</span></div>
+          <div class="food-item"><strong>RYSE Hotel Side Note Club</strong> <span>— rooftop bar with Hongdae view, excellent cocktails</span></div>
+          <div class="food-item"><strong>Magpie Brewing</strong> <span>— legendary sour beers, Ghost sour is a Seoul classic</span></div>
+          <div class="food-item"><strong>Craft Roo(t), Ikseon-dong</strong> <span>— craft beer in a 100-year-old hanok courtyard</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= TIPS ======================= -->
+<div id="leg-tips" class="leg">
+
+  <div class="food-guide">
+    <div class="fg-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">Complete Korean Food & Drink Guide</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="fg-body">
+      <div class="fg-item"><div class="fg-dish">Bindaetteok — Mung Bean Pancake</div><div class="fg-where">Where: Gwangjang Market, Seoul</div><div class="fg-desc">Ground mung beans mixed with pork, bean sprouts, and kimchi, pan-fried until golden. Crispy outside, moist inside. The single best thing to eat at Gwangjang. Pair with makgeolli — this is the classic Korean combination. ₩5,000/pancake.</div></div>
+      <div class="fg-item"><div class="fg-dish">Mayak Gimbap — "Drug" Rice Rolls</div><div class="fg-where">Where: Gwangjang Market (Original Mayak Gimbap stall)</div><div class="fg-desc">Half the size of regular kimbap, packed with sesame oil, seeds, and pickled radish. The name means "drug" — because you genuinely cannot stop eating them. Queue is always long but moves fast. Order at least 2 rolls. ₩3,000/roll.</div></div>
+      <div class="fg-item"><div class="fg-dish">Yukhoe — Korean Beef Tartare</div><div class="fg-where">Where: Gwangjang Market 2nd floor yukhoe alley</div><div class="fg-desc">Fresh Hanwoo beef julienned by hand and tossed with sesame oil, pear, garlic, and egg yolk. The quality at Gwangjang is extraordinarily high — vendors source fresh beef every morning. Try the yukhoe + nakji (octopus) set (₩20,000). Pairs beautifully with makgeolli.</div></div>
+      <div class="fg-item"><div class="fg-dish">Samgyeopsal — Pork Belly BBQ</div><div class="fg-where">Where: Any Korean BBQ restaurant</div><div class="fg-desc">Thick-cut pork belly grilled at the table. Wrap in perilla leaf or lettuce with sliced garlic, gochujang, and kimchi. The act of wrapping (ssam) is social and interactive. Order soju bombs (somaek) alongside. Budget ₩15,000–20,000/person for a full spread.</div></div>
+      <div class="fg-item"><div class="fg-dish">Galbi — Marinated Short Rib BBQ</div><div class="fg-where">Where: Upscale Korean BBQ restaurants</div><div class="fg-desc">Beef short ribs marinated overnight in soy, garlic, pear, and sesame. More premium and refined than samgyeopsal. The caramelisation on the grill is extraordinary. Always served with banchan (unlimited side dishes). Try bone-in galbi for the real experience.</div></div>
+      <div class="fg-item"><div class="fg-dish">Dwaeji Gukbap — Pork Rice Soup</div><div class="fg-where">Where: Busan (Seomyeon, Haeundae area restaurants)</div><div class="fg-desc">Milky pork bone broth simmered for hours, with sliced boiled pork and rice. Season with salted shrimp, chives, and gochujang from the condiment pots on the table. Busan's unofficial breakfast and hangover cure. ₩8,000–10,000/bowl.</div></div>
+      <div class="fg-item"><div class="fg-dish">Milmyeon — Cold Wheat Noodles</div><div class="fg-where">Where: Busan (Seomyeon, Choryang Milmyeon Street)</div><div class="fg-desc">Busan's signature dish — chewy wheat noodles in cold tangy broth (mul milmyeon) or spicy sauce (bibim milmyeon). Made from flour provided by the US Army to Korean War refugees — genuinely historical food. Refreshing even in winter. ₩9,000–10,000/bowl.</div></div>
+      <div class="fg-item"><div class="fg-dish">Eomuk — Fish Cake Skewers</div><div class="fg-where">Where: Street stalls everywhere in Busan, Busan Station area</div><div class="fg-desc">Busan is the fish cake capital of Korea. Spongy, savoury fish cake on skewers in a light broth. The broth (mul-tteok) is served free in cups on the side — drink it. Cheap (₩1,000/skewer) and comforting. Samjin Eomuk Cafe near Nampo-dong does an elevated version.</div></div>
+      <div class="fg-item"><div class="fg-dish">Heukdwaeji — Jeju Black Pork BBQ</div><div class="fg-where">Where: Jeju Island — Seogwipo and Jeju City black pork streets</div><div class="fg-desc">Jeju's black pigs produce richer, more complex pork than mainland breeds. The flavour difference is real — richer marbling, deeper taste, chewier texture. Always grilled at the table, always with a plastic bag for your jacket, always with Jeju soju and perilla leaves. ₩15,000–20,000/person.</div></div>
+      <div class="fg-item"><div class="fg-dish">Jeonbok Juk — Abalone Porridge</div><div class="fg-where">Where: Jeju — Seogwipo Maeil Olle Market, coastal restaurants</div><div class="fg-desc">Green-tinged rice porridge made with abalone and its digestive tract (which gives the green colour). Deeply oceanic, creamy, and intensely savoury. One of the most uniquely Jeju foods. Best as a morning meal after a hike or as recovery food after the beach.</div></div>
+      <div class="fg-item"><div class="fg-dish">Pajeon + Makgeolli</div><div class="fg-where">Where: Traditional restaurants, pojangmacha, mountain trailheads</div><div class="fg-desc">Savoury green onion pancake (pajeon) with a cold bowl of makgeolli (milky fizzy rice wine). On a rainy day, this pairing is one of Korea's most beloved cultural rituals — even the name for rainy weather in Korean is associated with pajeon cravings. Absolutely do this at a mountain trailhead after hiking.</div></div>
+      <div class="fg-item"><div class="fg-dish">Chimaek — Fried Chicken + Beer</div><div class="fg-where">Where: Everywhere, BHC near Myeongdong especially celebrated</div><div class="fg-desc">Korea's most beloved casual food culture. Double-fried Korean fried chicken (crispy, lighter batter than Western) served with beer. Eaten late at night while watching sports, after drinking, or just because. Order half soy-garlic, half spicy. BHC and Kyochon are the dominant national chains.</div></div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">Getting Around Korea</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row"><div class="tip-key">T-money Card</div><div class="tip-val">Buy at any convenience store or subway booth (₩2,500 + load amount). Works on all subways, buses, and taxis in Seoul, Busan, and most Korean cities. Essential. Never buy single-use tickets.</div></div>
+      <div class="tip-row"><div class="tip-key">KTX Train</div><div class="tip-val"><strong>Seoul → Busan:</strong> 2h 15min, ~₩60,000 standard. Book at Korail.go.kr or the Korail Talk app. Reserve a window seat on the right side going south for best views.</div></div>
+      <div class="tip-row"><div class="tip-key">Jeju Car Rental</div><div class="tip-val">Absolutely essential. Rent at the airport (Avis, KT Kumho, Lotte Rent-a-Car). An IDP (International Driving Permit) is required alongside your national license. Book online before arriving for better rates.</div></div>
+      <div class="tip-row"><div class="tip-key">Navigation</div><div class="tip-val"><strong>Naver Maps</strong> — not Google Maps. Google Maps is unreliable for Korean transit routing, hiking trails, and addresses. Also download Kakao Map as backup. Both are free.</div></div>
+      <div class="tip-row"><div class="tip-key">Taxis</div><div class="tip-val"><strong>KakaoTaxi</strong> (Korea's Uber): download before arriving. Instantly available, affordable (base fare ~₩4,800), and the in-app translation handles language. Better than flagging a random cab.</div></div>
+      <div class="tip-row"><div class="tip-key">Airport Express</div><div class="tip-val">AREX from Incheon to Hongdae: 43 minutes, ₩9,500. From Seoul Station: 51 minutes. The Airport Express runs frequently from 5am–midnight. Far better than a taxi (₩70,000–90,000).</div></div>
+      <div class="tip-row"><div class="tip-key">Busan subway</div><div class="tip-val">Excellent network covering all major sights. Get an all-day pass (₩4,500) for unlimited rides. Gamcheon, Haeundae, Nampo, Seomyeon — all connected.</div></div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">Practical Money + Apps</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row"><div class="tip-key">Cash</div><div class="tip-val">Always carry ₩50,000–100,000. Markets (Gwangjang, Jagalchi, Mangwon), street food, pojangmacha tents, mountain restaurants — cash only. ATMs at convenience stores (7-Eleven, GS25, CU) accept foreign cards 24/7.</div></div>
+      <div class="tip-row"><div class="tip-key">Currency</div><div class="tip-val">₩1,000 = approximately €0.65 / $0.70. Budget reference: street food meal ₩5,000–10,000 / restaurant meal ₩12,000–20,000 / Korean BBQ dinner ₩35,000–50,000pp with drinks / craft beer ₩8,000–12,000.</div></div>
+      <div class="tip-row"><div class="tip-key">Tax Refund</div><div class="tip-val">Korea offers VAT refunds (up to 10%) at the airport. Look for "Tax Free" stickers at shops. Some Olive Young and Daiso stores offer instant over-the-counter refunds — show your passport. Aggregate all receipts over ₩30,000.</div></div>
+      <div class="tip-row"><div class="tip-key">Papago</div><div class="tip-val">Naver's translation app — better than Google Translate for Korean. Point your camera at menus, signs, or text for real-time translation. Download offline Korean pack before you go.</div></div>
+      <div class="tip-row"><div class="tip-key">eSIM</div><div class="tip-val">Buy a Korean eSIM before departure (Airalo, KT, SKT) for 10GB+/week from ~₩15,000. Instant activation, no queuing at the airport SIM booth. Essential for Naver Maps and KakaoTaxi.</div></div>
+      <div class="tip-row"><div class="tip-key">Convenience Stores</div><div class="tip-val">CU, GS25, 7-Eleven — open 24/7 and genuinely excellent. Buy triangle kimbap (₩1,500), tteokbokki cups, yakult, instant ramen bowls, or fried chicken. At 2am after a night out, these are essential. Many have seating and hot water stations.</div></div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">Korean Drinking Culture — The Full Guide</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row"><div class="tip-key">Soju</div><div class="tip-val">Korea's national spirit — distilled rice wine, 16–25% ABV. Original soju (Jinro, Chamisul) has a sharp, clean taste. Fruit sojus (grapefruit, strawberry, peach) are sweeter and very popular with tourists. Served cold in small shot glasses. Always pour for others, not yourself.</div></div>
+      <div class="tip-row"><div class="tip-key">Makgeolli</div><div class="tip-val">Unfiltered, milky, fizzy rice wine. 5–8% ABV. Slightly sweet and tangy, with a lightly fizzy quality. Traditionally served in a large bowl or kettle. The ideal pairing is pajeon (pancake) — especially on a rainy day. Best tried at Gwangjang Market or a traditional makgeolli bar.</div></div>
+      <div class="tip-row"><div class="tip-key">Somaek</div><div class="tip-val">The beloved Korean "bomb" — pour a shot of soju into half a glass of beer. Classic ratio is 3:7 (soju to beer). Stir by spinning the shot glass with two chopsticks. This is how most Koreans actually drink at dinner.</div></div>
+      <div class="tip-row"><div class="tip-key">Anju</div><div class="tip-val">Drinking food — essential in Korean drinking culture. You always eat while drinking. Anju can be anything from dried squid and peanuts to pajeon, tteokbokki, or fried chicken. Ordering food with alcohol is expected at pojangmacha and bars.</div></div>
+      <div class="tip-row"><div class="tip-key">Pouring etiquette</div><div class="tip-val">Pour drinks for everyone at the table before filling your own. Use two hands (or right hand supported at the wrist) when pouring and receiving. Say "geonbae!" for cheers. Never let someone's glass stay empty.</div></div>
+      <div class="tip-row"><div class="tip-key">Pojangmacha</div><div class="tip-val">Canvas tent pubs — fold-up tables on the street or in covered alley spaces, serving cheap soju, beer, makgeolli, and anju. An institution. Best experienced late at night when the city is winding down. Find them near universities and entertainment districts.</div></div>
+      <div class="tip-row"><div class="tip-key">Craft Beer</div><div class="tip-val"><strong>Best spots:</strong> Seongsu (Amazing Brewing Co., Seoul Brewery), Euljiro (Euljiro Brewing, Artmonster), Itaewon (Magpie, The Booth), Hongdae (Magpie Brewing branch, Seoul Brewery Hapjeong). Korean craft beer has become genuinely excellent — IPAs, sours, and experimental brews.</div></div>
+      <div class="tip-row"><div class="tip-key">Jjimjilbang</div><div class="tip-val">Korean communal sauna — a genuine cultural experience, not just a spa. Communal areas (pyjamas provided) include themed sauna rooms, sleeping areas, and food courts. Women's/men's bathing areas are separate and clothing-free. Dragon Hill Spa (Yongsan) and Heosimcheong (Busan) are the best. ₩10,000–15,000 all-in.</div></div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">Cultural Etiquette</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row"><div class="tip-key">Bowing</div><div class="tip-val">A slight bow (15°) is the standard greeting. Deep bows are for formal occasions. Nodding while saying annyeonghaseyo (안녕하세요) is perfectly appropriate for most interactions.</div></div>
+      <div class="tip-row"><div class="tip-key">Two hands</div><div class="tip-val">Use two hands (or right hand + left supporting the wrist) when giving or receiving anything: money, cards, gifts, food, business cards. This shows respect, especially to elders.</div></div>
+      <div class="tip-row"><div class="tip-key">Shoes</div><div class="tip-val">Remove shoes when entering homes and some traditional restaurants. A shoe rack at the entrance is the signal. Never step on the raised floor area with shoes on.</div></div>
+      <div class="tip-row"><div class="tip-key">Eating together</div><div class="tip-val">Korean meals are communal — dishes are shared from the centre. Never stick chopsticks vertically into rice (funeral association). Elders eat first. Don't refuse food that's been offered.</div></div>
+      <div class="tip-row"><div class="tip-key">Photography</div><div class="tip-val">Always ask before photographing individuals, especially ajummas (older women) at markets. Koreans have constitutionally protected portrait rights — photographing someone without consent can be legally problematic.</div></div>
+      <div class="tip-row"><div class="tip-key">Useful phrases</div><div class="tip-val"><strong>Annyeonghaseyo</strong> — hello | <strong>Gamsahamnida</strong> — thank you | <strong>Juseyo</strong> — please give me [this] | <strong>Eolmayeyo?</strong> — how much? | <strong>Geonbae!</strong> — cheers! | <strong>Jugeunde?</strong> — is [this] available? Koreans respond warmly to any attempt.</div></div>
+    </div>
+  </div>
+
+  <div class="tips-category">
+    <div class="tips-cat-header" onclick="toggleTips(this)">
+      <span style="font-size:1.05rem">Book-Ahead Checklist</span>
+      <span class="chev">▼</span>
+    </div>
+    <div class="tips-cat-body">
+      <div class="tip-row"><div class="tip-key">Hallasan summit</div><div class="tip-val">Reserve summit hiking permits at <strong>visithalla.jeju.go.kr</strong> — spots are capped, especially April–May and September–October. Book weeks ahead.</div></div>
+      <div class="tip-row"><div class="tip-key">Secret Garden</div><div class="tip-val">Changdeokgung Secret Garden tickets at <strong>cdg.go.kr</strong> — only 100 visitors per timed slot. English tours available. Book 1–2 weeks ahead.</div></div>
+      <div class="tip-row"><div class="tip-key">Haeundae Blueline</div><div class="tip-val">Sky Capsule at Haeundae — book through official website or Klook. Sells out on weekends, especially Saturday.</div></div>
+      <div class="tip-row"><div class="tip-key">DMZ Tour</div><div class="tip-val">Book 48+ hours ahead through Viator, KKday, or a local Seoul agency. Passport required. Full-day tours include JSA (Panmunjom).</div></div>
+      <div class="tip-row"><div class="tip-key">KTX trains</div><div class="tip-val">Book Seoul → Busan at <strong>korail.go.kr</strong> or Korail Talk app. Popular trains (morning and Friday evening) sell out. Book 1–2 weeks ahead.</div></div>
+      <div class="tip-row"><div class="tip-key">Fine dining</div><div class="tip-val">Born & Bred (Seoul), Michelin spots in Busan — book 2–4 weeks ahead if you want specific dates.</div></div>
+      <div class="tip-row"><div class="tip-key">Jeju car rental</div><div class="tip-val">Book online before flying to Jeju. International Driving Permit (IDP) required alongside your home license. Bring both.</div></div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end container -->
+
+<script>
+function showLeg(id, btn) {
+  document.querySelectorAll('.leg').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('leg-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleDay(header) {
+  const body = header.nextElementSibling;
+  const chev = header.querySelector('.chev');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+function toggleTips(header) {
+  const body = header.nextElementSibling;
+  const chev = header.querySelector('.chev');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+</script>
+</body>
+</html>
